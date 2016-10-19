@@ -1,0 +1,166 @@
+body {
+    background-image:img/bg5.jpg;
+	background-repeat: repeat-x;
+	 max-width: 100%;
+    overflow-x: hidden;
+}
+a{
+	
+}
+a:hover{
+	/*background-color:none;*/
+}
+#slider1 a{
+	display: none;
+}
+#slider1 img{
+
+	width: 100%;
+	height:250px;	
+	
+}
+#authe{
+	margin-right:10px;
+	padding-right:5px;
+	padding-top:5px;
+	padding-left:5px;
+}
+.logo-wrap img {
+	margin-top: 5px;
+	max-width: 35%;
+	
+   	
+}
+#detail{
+	
+	padding-left: 50px;
+	padding-right: 50px;
+	height:auto;
+	padding-top: 0px;
+	
+}
+#photohubdetail{
+	background-color: #93d0c5;
+	background-image:url(img/photohub.png);
+	border:4px #e6eeff solid;
+	height: 350px;
+}
+#designdetail{
+	background-color: #93d0c5;
+	
+	border:4px #e6eeff solid;
+	height: 350px;
+}
+#vrdetail{
+	background-color: #93d0c5;
+	
+	border:4px #e6eeff solid;
+	height: 350px;
+}
+.navbar{
+	margin-top: 10px;
+	background-color: #e6eeff;
+	border: none;
+	opacity: 0.5;
+	text-align: center;
+}
+.navbar ul li{
+	background:none;
+}
+.navbar-default .navbar-nav > li > a{
+    font-family: Berlin Sans FB;
+    font-size: 23px;
+    color: #00091a;  
+    margin-bottom:-5px;
+}
+.navbar-default .navbar-nav > li > a:hover{
+	
+	background-color: #99ccff;
+}
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+/*.navbar-default .navbar-nav > ul {
+	padding-left: 50px;
+}*/
+
+
+.container1{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	height:auto;
+	/*text-align: left;*/
+	font: bold 16px sans-serif;
+	
+	padding: 55px 50px;
+	margin-top: 80px;
+	
+	
+}
+.container1 p{
+	margin: 0;
+	padding: 5px;
+	color:white;
+}
+.container1 h1{
+	font: bold 26px sans-serif;
+	text-transform: none;
+	color:#93d0c5;
+	
+}
+footer{
+	position: fixed;
+	bottom: 0;
+}
+
+@media (max-height:800px){
+	footer { position: static; }
+	header { padding-top:40px; }
+}
+
+
+
+/*footer*/
+
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
+/*footer 2*/
