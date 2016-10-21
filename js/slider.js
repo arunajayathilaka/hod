@@ -6,7 +6,7 @@ $(document).ready(function(){
     var count = 3;
 
     function bannerRotator() {
-        $('#slider1 a').delay(4300).eq(index).fadeOut(function() { 
+        $('#slider1 a').delay(3000).eq(index).fadeOut(function() { 
             if (index === count){
                 index = -1;
             }

@@ -21,7 +21,7 @@ require_once'init.php';
  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-<body style="background-image:url(img/bg5.jpg);background-size: 100% 100%;">
+<body style="/*background-image:url(img/bg5.jpg);*/ background-color:#E1E1E1;background-size: 100% 100%;">
 	
 		
 			<?php 
@@ -39,16 +39,16 @@ require_once'init.php';
     		<div class="row">
 				<div class="col-sm-12" id="slider1">
 					<a href="#">
-						<img src="img/sliders/1.jpg" />
+						<img src="img/sliders/slider1.jpg" />
 					</a>
 					<a href="#">
-						<img src="img/sliders/2.jpg"/>
+						<img src="img/sliders/slider2.jpg"/>
 					</a>
 					<a href="#">
-						<img src="img/sliders/3.jpg"/>
+						<img src="img/sliders/slider3.png"/>
 					</a>
 					<a href="#">
-						<img src="img/sliders/4.jpg"/>
+						<img src="img/sliders/slider4.jpg"/>
 					</a>
 					
 				</div>
@@ -56,7 +56,7 @@ require_once'init.php';
 			</div>
 		
 		<div class="row">
-			<div class="col-md-12 text-center" style="background-color:#e6eeff;opacity: 0.5; height:auto;margin-bottom:80px; margin-top:50px;">
+			<div class="col-md-12 text-center" style="background-color:#e6eeff; height:auto;margin-bottom:80px; margin-top:50px;">
 			<img src="img/floral.png" class="img-responsive center-block" style="">
 				<h1 class="text-center">Welcome</h1>
 				<p class="text-center" style="margin-right:100px;color:#00091a;">Thank you for visiting hod.lk <br/>We want to take this opportunity to thank you for your patronage. We know you have many 

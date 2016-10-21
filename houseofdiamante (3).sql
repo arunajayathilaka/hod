@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2016 at 12:35 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Oct 21, 2016 at 05:37 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `houseofdiamante`
@@ -26,26 +26,28 @@ SET time_zone = "+00:00";
 -- Table structure for table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
   `title_name` varchar(200) NOT NULL,
   `username` varchar(250) NOT NULL,
   `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `likes` int(11) NOT NULL,
+  `loves` int(11) NOT NULL,
+  `hahas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`id`, `title_name`, `username`, `image_url`) VALUES
-(1, 'beautiful ring', 'thila', 'img/photohub images/trend1.jpg'),
-(2, 'eligent earings', 'seo', 'img/photohub images/earing1.jpg'),
-(3, 'fabulous ring', 'guru', 'img/photohub images/jewel1.jpg'),
-(4, 'necklaces', 'tharu1991', 'img/photohub images/trend2.jpg'),
-(5, 'bangels', 'eranga123', 'img/photohub images/jewel2.jpg'),
-(6, 'beautiful jewel', 'random', 'img/photohub images/trend3.jpg'),
-(7, 'ring design', 'thila', 'img/photohub images/ring2.jpg');
+INSERT INTO `articles` (`id`, `title_name`, `username`, `image_url`, `likes`, `loves`, `hahas`) VALUES
+(1, 'beautiful ring', 'thila', 'img/photohub images/trend1.jpg', 1, 1, 1),
+(2, 'eligent earings', 'seo', 'img/photohub images/earing1.jpg', 1, 1, 1),
+(3, 'fabulous ring', 'guru', 'img/photohub images/jewel1.jpg', 1, 1, 1),
+(4, 'necklaces', 'tharu1991', 'img/photohub images/trend2.jpg', 1, 1, 1),
+(5, 'bangels', 'eranga123', 'img/photohub images/jewel2.jpg', 1, 1, 1),
+(6, 'beautiful jewel', 'random', 'img/photohub images/trend3.jpg', 1, 0, 0),
+(7, 'ring design', 'thila', 'img/photohub images/ring2.jpg', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -53,12 +55,11 @@ INSERT INTO `articles` (`id`, `title_name`, `username`, `image_url`) VALUES
 -- Table structure for table `articles_haha`
 --
 
-CREATE TABLE IF NOT EXISTS `articles_haha` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles_haha` (
+  `id` int(11) NOT NULL,
   `user` varchar(100) NOT NULL,
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `articles_haha`
@@ -79,15 +80,73 @@ INSERT INTO `articles_haha` (`id`, `user`, `article_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `articles_like`
+--
+
+CREATE TABLE `articles_like` (
+  `id` int(11) NOT NULL,
+  `user` varchar(250) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `articles_like`
+--
+
+INSERT INTO `articles_like` (`id`, `user`, `type`, `article_id`) VALUES
+(22, 'mythree', 'like', 1),
+(23, 'mythree', 'love', 1),
+(24, 'mythree', 'haha', 4),
+(26, 'mythree', 'haha', 1),
+(27, 'mythree', 'like', 2),
+(28, 'mythree', 'love', 2),
+(29, 'mythree', 'haha', 2),
+(30, 'mythree', 'like', 3),
+(31, 'mythree', 'love', 3),
+(32, 'mythree', 'haha', 3),
+(33, 'mythree', 'like', 4),
+(34, 'mythree', 'love', 4),
+(35, 'mythree', 'like', 5),
+(36, 'mythree', 'love', 5),
+(37, 'mythree', 'haha', 5),
+(38, 'mythree', 'like', 6);
+
+--
+-- Triggers `articles_like`
+--
+DELIMITER $$
+CREATE TRIGGER `trig2` AFTER INSERT ON `articles_like` FOR EACH ROW BEGIN
+    IF NEW.type = 'like' THEN
+        UPDATE articles
+        SET likes = likes+1
+        WHERE articles.id = NEW.article_id;
+    END IF;
+    IF NEW.type = 'love' THEN
+        UPDATE articles
+        SET loves = loves+1
+        WHERE articles.id = NEW.article_id;
+    END IF;
+    IF NEW.type = 'haha' THEN
+        UPDATE articles
+        SET hahas = hahas+1
+        WHERE articles.id = NEW.article_id;
+    END IF;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `articles_likes`
 --
 
-CREATE TABLE IF NOT EXISTS `articles_likes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles_likes` (
+  `id` int(11) NOT NULL,
   `user` varchar(20) NOT NULL,
-  `article_id` int(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+  `article_id` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `articles_likes`
@@ -112,12 +171,11 @@ INSERT INTO `articles_likes` (`id`, `user`, `article_id`) VALUES
 -- Table structure for table `articles_love`
 --
 
-CREATE TABLE IF NOT EXISTS `articles_love` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles_love` (
+  `id` int(11) NOT NULL,
   `user` varchar(100) NOT NULL,
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+  `article_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `articles_love`
@@ -141,12 +199,11 @@ INSERT INTO `articles_love` (`id`, `user`, `article_id`) VALUES
 -- Table structure for table `centercut`
 --
 
-CREATE TABLE IF NOT EXISTS `centercut` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `centercut` (
+  `id` int(11) NOT NULL,
   `cut_name` varchar(250) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `centercut`
@@ -163,15 +220,14 @@ INSERT INTO `centercut` (`id`, `cut_name`, `image_url`) VALUES
 -- Table structure for table `chat`
 --
 
-CREATE TABLE IF NOT EXISTS `chat` (
-  `msg_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `chat` (
+  `msg_id` int(11) NOT NULL,
   `sender` varchar(100) NOT NULL,
   `receiver` varchar(100) NOT NULL,
   `message` text NOT NULL,
   `updated_date` date NOT NULL,
-  `updated_time` time NOT NULL,
-  PRIMARY KEY (`msg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+  `updated_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `chat`
@@ -203,14 +259,13 @@ INSERT INTO `chat` (`msg_id`, `sender`, `receiver`, `message`, `updated_date`, `
 -- Table structure for table `customerlogin`
 --
 
-CREATE TABLE IF NOT EXISTS `customerlogin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customerlogin` (
+  `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(10) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customerlogin`
@@ -220,7 +275,8 @@ INSERT INTO `customerlogin` (`id`, `username`, `email`, `password`, `image_url`)
 (1, 'mythree', 'mythree@gmail.com', 'mythree', 'http://placehold.it/50x50'),
 (2, 'arunadj', 'arunadilshanjayathilake@yahoo.', '123', 'http://placehold.it/50x50'),
 (3, 'thila', 'thila@yahoo.com', 'thila', 'http://placehold.it/50x50'),
-(6, 'dad', 'dad@yahoo.com', 'df3939f119', 'http://placehold.it/50x50');
+(6, 'dad', 'dad@yahoo.com', 'df3939f119', 'http://placehold.it/50x50'),
+(7, 'jaya', 'jaya@gmail.com', 'ce9689abde', 'http://placehold.it/50x50');
 
 -- --------------------------------------------------------
 
@@ -228,14 +284,13 @@ INSERT INTO `customerlogin` (`id`, `username`, `email`, `password`, `image_url`)
 -- Table structure for table `gem`
 --
 
-CREATE TABLE IF NOT EXISTS `gem` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gem` (
+  `id` int(11) NOT NULL,
   `gem_name` varchar(250) NOT NULL,
   `model_name` varchar(250) NOT NULL,
   `gem_dec` varchar(500) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gem`
@@ -251,13 +306,12 @@ INSERT INTO `gem` (`id`, `gem_name`, `model_name`, `gem_dec`, `image_url`) VALUE
 -- Table structure for table `metal`
 --
 
-CREATE TABLE IF NOT EXISTS `metal` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `metal` (
+  `id` int(11) NOT NULL,
   `metal_name` varchar(250) NOT NULL,
   `model_name` varchar(250) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `metal`
@@ -274,14 +328,13 @@ INSERT INTO `metal` (`id`, `metal_name`, `model_name`, `image_url`) VALUES
 -- Table structure for table `notification`
 --
 
-CREATE TABLE IF NOT EXISTS `notification` (
-  `not_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `notification` (
+  `not_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `vendor` varchar(15) NOT NULL,
   `customer` varchar(15) NOT NULL,
-  `view` varchar(10) NOT NULL,
-  PRIMARY KEY (`not_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `view` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notification`
@@ -300,16 +353,15 @@ INSERT INTO `notification` (`not_id`, `date`, `vendor`, `customer`, `view`) VALU
 -- Table structure for table `product_items`
 --
 
-CREATE TABLE IF NOT EXISTS `product_items` (
-  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_items` (
+  `item_id` int(11) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_type` varchar(100) NOT NULL,
   `product_dec` varchar(250) NOT NULL,
   `product_price` varchar(50) NOT NULL,
   `image_url` varchar(250) NOT NULL,
-  `vendor_username` varchar(100) NOT NULL,
-  PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `vendor_username` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product_items`
@@ -318,9 +370,9 @@ CREATE TABLE IF NOT EXISTS `product_items` (
 INSERT INTO `product_items` (`item_id`, `product_name`, `product_type`, `product_dec`, `product_price`, `image_url`, `vendor_username`) VALUES
 (1, 'white ring', 'ring', 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '$64.99', 'img/vendor images/mallika/ring3.jpg', 'mallika'),
 (2, 'gold neckles', 'neckles', 'gnxfgjxxnnvbxn', '$64.99', 'img/vendor images/mallika/necklace1.jpg', 'mallika'),
-(3, 'silver ring', 'earings', 'sdrawetgdbcvx', '$64.99', 'img/vendor images/neha/ring1.jpg', 'Neha Jewellery'),
-(4, 'necklace with<br> pearl', 'necklace', 'good looking', '$30.00', 'img/vendor images/neha/necklace2.jpg', 'Neha Jewellery'),
-(5, 'Gold necklace', 'necklace', 'eligent one', '$35.00', 'img/vendor images/cjs/necklace3.jpg', 'cjs'),
+(3, 'silver ring', 'ring', 'sdrawetgdbcvx', '$64.99', 'img/vendor images/neha/ring1.jpg', 'Neha Jewellery'),
+(4, 'necklace with<br> pearl', 'neckles', 'good looking', '$30.00', 'img/vendor images/neha/necklace2.jpg', 'Neha Jewellery'),
+(5, 'Gold necklace', 'neckles', 'eligent one', '$35.00', 'img/vendor images/cjs/necklace3.jpg', 'cjs'),
 (6, 'gold earings', 'earings', 'nice looking', '$20.00', 'img/vendor images/cjs/earing2.jpg', 'cjs'),
 (7, 'silver ring with<br> diamond', 'ring', 'eligent and beautiful ring', '$69.00', 'img/vendor images/kendra/ring2.jpg', 'kendra scot'),
 (8, 'gold ring with<br> diamond', 'ring', 'nice looking for ladies', '$56.00', 'img/vendor images/kendra/ring4.jpg', 'kendra scot');
@@ -331,8 +383,8 @@ INSERT INTO `product_items` (`item_id`, `product_name`, `product_type`, `product
 -- Table structure for table `quotation`
 --
 
-CREATE TABLE IF NOT EXISTS `quotation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quotation` (
+  `id` int(11) NOT NULL,
   `full_name` varchar(250) NOT NULL,
   `mobile_num` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
@@ -341,9 +393,8 @@ CREATE TABLE IF NOT EXISTS `quotation` (
   `metal` varchar(250) NOT NULL,
   `gemstone` varchar(250) NOT NULL,
   `center_cut` varchar(250) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quotation`
@@ -359,13 +410,12 @@ INSERT INTO `quotation` (`id`, `full_name`, `mobile_num`, `email`, `ring_size`, 
 -- Table structure for table `rating`
 --
 
-CREATE TABLE IF NOT EXISTS `rating` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rating` (
+  `id` int(11) NOT NULL,
   `user` varchar(100) NOT NULL,
   `vendor_username` varchar(100) NOT NULL,
-  `rate` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `rate` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rating`
@@ -375,7 +425,7 @@ INSERT INTO `rating` (`id`, `user`, `vendor_username`, `rate`) VALUES
 (1, 'mythree', 'mallika', 3),
 (2, 'mythree', 'kendra scot', 4),
 (3, '', 'mallika', 4),
-(4, 'mythree', 'Neha Jewellery', 5),
+(4, 'mythree', 'Neha Jewellery', 3),
 (5, 'thila', 'cjs', 4),
 (6, '', 'kendra scot', 3),
 (7, '', 'cjs', 4);
@@ -386,13 +436,12 @@ INSERT INTO `rating` (`id`, `user`, `vendor_username`, `rate`) VALUES
 -- Table structure for table `ringtype`
 --
 
-CREATE TABLE IF NOT EXISTS `ringtype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ringtype` (
+  `id` int(11) NOT NULL,
   `type_name` varchar(250) NOT NULL,
   `gem_n` varchar(250) NOT NULL,
-  `image_url` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `image_url` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ringtype`
@@ -408,14 +457,13 @@ INSERT INTO `ringtype` (`id`, `type_name`, `gem_n`, `image_url`) VALUES
 -- Table structure for table `temp_customerlogin`
 --
 
-CREATE TABLE IF NOT EXISTS `temp_customerlogin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `temp_customerlogin` (
+  `id` int(11) NOT NULL,
   `confirm_code` varchar(50) NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_customerlogin`
@@ -424,7 +472,8 @@ CREATE TABLE IF NOT EXISTS `temp_customerlogin` (
 INSERT INTO `temp_customerlogin` (`id`, `confirm_code`, `username`, `email`, `password`) VALUES
 (1, '4ee87bf8bc6dde8b0d88373edbb2c73c', 'arunadj', 'arunadilshanjayathilake@yahoo.com', '123'),
 (2, 'a28bc4e0ef7e991224f5ce6b16f0797d', 'thila', 'thila@yahoo.com', 'thila'),
-(3, '308833b636d84078b97d8ca84c14f116', 'jhbuhb', 'jhbujhb', '92163508c0b18e75db11');
+(3, '308833b636d84078b97d8ca84c14f116', 'jhbuhb', 'jhbujhb', '92163508c0b18e75db11'),
+(4, '08d288990ac012f103ed3be9e5338495', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -432,7 +481,7 @@ INSERT INTO `temp_customerlogin` (`id`, `confirm_code`, `username`, `email`, `pa
 -- Table structure for table `venderdetail`
 --
 
-CREATE TABLE IF NOT EXISTS `venderdetail` (
+CREATE TABLE `venderdetail` (
   `vId` int(11) NOT NULL,
   `vName` int(11) NOT NULL,
   `vPassword` int(11) NOT NULL,
@@ -445,17 +494,16 @@ CREATE TABLE IF NOT EXISTS `venderdetail` (
 -- Table structure for table `vendor`
 --
 
-CREATE TABLE IF NOT EXISTS `vendor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vendor` (
+  `id` int(11) NOT NULL,
   `vendor_name` varchar(250) NOT NULL,
   `vendor_email` varchar(250) NOT NULL,
   `vendor_username` varchar(250) NOT NULL,
   `vendor_password` varchar(250) NOT NULL,
   `image_url` varchar(250) NOT NULL,
   `telephone` int(10) NOT NULL,
-  `vAddress` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `vAddress` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vendor`
@@ -464,6 +512,201 @@ CREATE TABLE IF NOT EXISTS `vendor` (
 INSERT INTO `vendor` (`id`, `vendor_name`, `vendor_email`, `vendor_username`, `vendor_password`, `image_url`, `telephone`, `vAddress`) VALUES
 (1, 'jkh', 'cjl@yahoo.com', 'cji210', 'cjl', '', 0, '');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles_haha`
+--
+ALTER TABLE `articles_haha`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles_like`
+--
+ALTER TABLE `articles_like`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles_likes`
+--
+ALTER TABLE `articles_likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `articles_love`
+--
+ALTER TABLE `articles_love`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `centercut`
+--
+ALTER TABLE `centercut`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`msg_id`);
+
+--
+-- Indexes for table `customerlogin`
+--
+ALTER TABLE `customerlogin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gem`
+--
+ALTER TABLE `gem`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `metal`
+--
+ALTER TABLE `metal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`not_id`);
+
+--
+-- Indexes for table `product_items`
+--
+ALTER TABLE `product_items`
+  ADD PRIMARY KEY (`item_id`);
+
+--
+-- Indexes for table `quotation`
+--
+ALTER TABLE `quotation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ringtype`
+--
+ALTER TABLE `ringtype`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `temp_customerlogin`
+--
+ALTER TABLE `temp_customerlogin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vendor`
+--
+ALTER TABLE `vendor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `articles_haha`
+--
+ALTER TABLE `articles_haha`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `articles_like`
+--
+ALTER TABLE `articles_like`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `articles_likes`
+--
+ALTER TABLE `articles_likes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+--
+-- AUTO_INCREMENT for table `articles_love`
+--
+ALTER TABLE `articles_love`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `centercut`
+--
+ALTER TABLE `centercut`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `customerlogin`
+--
+ALTER TABLE `customerlogin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `gem`
+--
+ALTER TABLE `gem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `metal`
+--
+ALTER TABLE `metal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `not_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `product_items`
+--
+ALTER TABLE `product_items`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `quotation`
+--
+ALTER TABLE `quotation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `ringtype`
+--
+ALTER TABLE `ringtype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `temp_customerlogin`
+--
+ALTER TABLE `temp_customerlogin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `vendor`
+--
+ALTER TABLE `vendor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

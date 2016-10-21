@@ -3,7 +3,7 @@
 require_once 'init.php';
 
 $passkey=$_GET['passkey'];
-$link=new mysqli("localhost","root","","houseofdiamante");
+//$link=new mysqli("localhost","root","","houseofdiamante");
 $result = mysqli_query($link,"SELECT * FROM temp_customerlogin WHERE confirm_code LIKE '%{$passkey}%'");
 
 while ($row = mysqli_fetch_array($result))

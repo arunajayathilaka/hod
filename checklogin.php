@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 //make a query for selecting email that user entered
-$link=new mysqli("localhost","root","","houseofdiamante");
+//$link=new mysqli("localhost","root","","houseofdiamante");
 $result = mysqli_query($link,"SELECT * FROM customerlogin WHERE email='{$email}'");
 $er=true;
 while ($row = mysqli_fetch_array($result))

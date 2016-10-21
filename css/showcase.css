@@ -1,0 +1,45 @@
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+	background-color: rgba(230,238,255,0.5);
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+
+.rate-btn{
+	display: inline-block;
+}
+.rate-btn span.icon:before { 
+  font-family: 'Glyphicons Halflings'; 
+  content:"\e007";
+  cursor: pointer;
+  
+  
+}
+.rate-btn span.icon1:before { 
+  font-family: 'Glyphicons Halflings'; 
+  content:"\e006"; 
+}
