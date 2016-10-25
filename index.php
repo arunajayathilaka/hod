@@ -18,8 +18,10 @@ require_once'init.php';
   
 	
  <link rel="stylesheet" href="css/home.css">
+ <link rel="stylesheet" href="css/slider.css">
  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+ 
 </head>
 <body style="/*background-image:url(img/bg5.jpg);*/ background-color:#E1E1E1;background-size: 100% 100%;">
 	
@@ -37,6 +39,8 @@ require_once'init.php';
 			
 				
     		<div class="row">
+                    <?php include("template/slider.php"); ?>
+                    <!--
 				<div class="col-sm-12" id="slider1">
 					<a href="#">
 						<img src="img/sliders/slider1.jpg" />
@@ -52,40 +56,35 @@ require_once'init.php';
 					</a>
 					
 				</div>
-			
+                    -->
 			</div>
 		
-		<div class="row">
-			<div class="col-md-12 text-center" style="background-color:#e6eeff; height:auto;margin-bottom:80px; margin-top:50px;">
-			<img src="img/floral.png" class="img-responsive center-block" style="">
-				<h1 class="text-center">Welcome</h1>
-				<p class="text-center" style="margin-right:100px;color:#00091a;">Thank you for visiting hod.lk <br/>We want to take this opportunity to thank you for your patronage. We know you have many 
-					choices for your gift needs, we are honored that you have selected us, <br/> and we appreciate your business.</p>
-			<img src="img/floral-d.png" class="img-responsive center-block" style="">
-			</div>
-			
-		</div>
+    <div class="row">
+        <div class="text-center" style="">
+        <h1>Our Service<h1> 
+                </div>
+    </div>
 		<div class="row row-centered" id="detail">
-					<div class="col-sm-4 text-center" style="background-image:url(img/photohub.png); background-repeat:no-repeat; background-size: 100% 100%;" id="photohubdetail">
+					<div class="col-sm-4 text-center"  id="photohubdetail">
 						<h2 class="text-center" style="color:#100c3e;">Photohub</h2>
 					<p class="text-center"style="padding-left:0px; color:#1b1464;">
 						Photohub is the place where people can upload images to it.and knowing about new jewellery trends.
 					</p>
-					<img src="img/photohubs.png" style="height:30%; opacity:0.8;" class="img-responsive center-block"/>
+					<img src="img/photohubs.png" style="height:30%; opacity:0.8;visibility:visible;animation-name:bounceIn;animation-duration: 4s;" class="img-responsive center-block" id="imgs"/>
 					</div>
 
-					<div class="col-sm-4 " style="background-image:url(img/designs.png); background-repeat:no-repeat; background-size: 100% 100%;"  id="designdetail">
+					<div class="col-sm-4 "  id="designdetail">
 						<h2 class="text-center" style="color:#100c3e;">Design</h2>
 						<p class="text-center" style="padding-left:0px; color:#1b1464;">
 						Design is the platform that people can recreate jewellery as they prefered.
 						</p>
-						<img src="img/design.png" style="height:30%; opacity:0.8;" class="img-responsive center-block" />
+						<img src="img/design.png" style="height:30%; opacity:0.8;visibility:visible;animation-name:bounceIn;animation-duration: 4s;" class="img-responsive center-block" id="imgs"/>
 					</div>
-					<div class="col-sm-4 text-center" style="background-image:url(img/vrs.png); background-repeat:no-repeat; background-size: 100% 100%;" id="vrdetail">
+					<div class="col-sm-4 text-center"  id="vrdetail">
 						<h2 class="text-center" style="color:#100c3e;">Vitual Mirror</h2>
 						<p class="text-center" style="padding-left:0px;color:#1b1464;">
 						Vmirror is the place where people can try out jewellery in virtual enviroment.</p>
-						<img src="img/vr.png" style="height:30%; opacity:0.8;" class="img-responsive center-block" />
+						<img src="img/vr.png" style="height:30%; opacity:0.8;visibility:visible;animation-name:bounceIn;animation-duration: 4s;" class="img-responsive center-block"id="imgs" />
 						
 					</div>
 				</div>
@@ -98,7 +97,12 @@ require_once'init.php';
 <script src="js/jquery.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="js/slider.js"></script>
-
+<script src="js/scroll.js"></script>
+<script>
+    $(function(){
+//$('#bs-carousel').carousel();
+    });
+</script>
 
 </body>
 </html>

@@ -18,7 +18,7 @@
  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-<body style="background-image:url(img/bg5.jpg);background-size: 100% 100%;">
+<body style="background-color:#E1E1E1;background-size: 100% 100%;">
 	
 		
 		
@@ -48,7 +48,7 @@
 					<form method="post" action="checklogin.php">
 						<input type="email" id="eml"name="u" placeholder="Username/Email" required="required"/>
 						<input type="password" id="pwd" name="p" placeholder="Password" required="required"/>
-						<button id="letmein"type="submit"> Let me in</button>
+						<button id="letmein"type="submit" > Let me in</button>
 					</form>
                                         
 					<p style="padding-left:0px;color:white;"><a style="color:white;">I forgot my password</a></p>

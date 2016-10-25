@@ -33,7 +33,7 @@ a:hover{
 	max-width: 35%;
 	
    	
-}
+}/*
 #detail{
 	
 	padding-left: 50px;
@@ -41,7 +41,7 @@ a:hover{
 	height:auto;
 	padding-top: 0px;
 	
-}
+}/*
 #photohubdetail{
 	background-color: #93d0c5;
 	background-image:url(img/photohub.png);
@@ -59,7 +59,7 @@ a:hover{
 	
 	border:4px #e6eeff solid;
 	height: 350px;
-}
+}*/
 .navbar{
 	margin-top: 10px;
 	background-color: #3D3D3D;
@@ -167,3 +167,31 @@ footer{
      color: #f39c12;
  }
 /*footer 2*/
+
+
+//logo animation
+.bounceIn{
+    transform-origin: top center;
+    
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 1;
+    transform: scale(.3);
+  } 
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  } 
+
+  70% {
+    opacity: 1;
+    transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

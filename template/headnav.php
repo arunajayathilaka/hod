@@ -3,7 +3,7 @@
 		<div class="row" style="background-image:url(img/dia.png); background-size: 100% 100%;">
 	    	<div class="col-xs-12">
 	    		<div class="logo-wrap text-center">
-    				<img src="img/logo2.png" class="img-responsive center-block" alt="logo" >		
+    				<img src="img/logo2.png" class="img-responsive center-block" style="visibility:visible;animation-name:bounceIn;animation-duration: 4s;" alt="logo" >		
     			</div>
 	    	</div>
 			</div>

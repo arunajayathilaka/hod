@@ -23,7 +23,7 @@ $row2=mysqli_num_rows($likesq);
 	
 if($row2==0){
 		$likesarr=array("null");
-		echo 'kosala';
+		//echo 'kosala';
 	}
 	else{
 	while($row2=mysqli_fetch_array($likesq)){
@@ -34,7 +34,7 @@ if($row2==0){
 $row3=mysqli_num_rows($loveq);
 	if($row3==0){
 		$lovearr=array("null");
-		echo 'dfg';
+		//echo 'dfg';
 	}
 	else{
 	while($row3=mysqli_fetch_array($loveq)){
@@ -45,7 +45,7 @@ $row3=mysqli_num_rows($loveq);
 $row4=mysqli_num_rows($hahaq);
 	if($row4==0){
 		$hahaarr=array("null");
-		echo 'sdd';
+		//echo 'sdd';
 	}
 	else{
 		while($row4=mysqli_fetch_array($hahaq)){
@@ -122,8 +122,8 @@ $row4=mysqli_num_rows($hahaq);
 			<div id="article">
 			
 			<?php foreach($articles1 as $article1):?>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <div class="thumbnail"style="background-color: rgba(230,238,255,0.5); border: 3px solid #218dfb;">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
+                <div class="thumbnail"style="width:280px;background-color: rgba(230,238,255,0.5); border: 3px solid #218dfb;">
                 
                     <img class="img-responsive" src="<?php echo $article1['image_url']; ?>" style="height:30%;" alt="">
                 

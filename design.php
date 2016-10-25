@@ -39,15 +39,25 @@
     opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 	
-	
+        }
 	
 	.selected{
 		box-shadow:0px 12px 22px 1px #333;
 		opacity: 0.5;
 		filter: alpha(opacity=50);
 	}
+        .dpanel{
+            height:380px; 
+            margin-top:20px;
+            background-color: rgba(230,238,255,0.5);
+        }
+        @media only screen and (max-width:767px){
+           .dpanel{
+                height:50%;
+            }
+        }
 	
-}
+
 	</style>
 </head>
 
@@ -165,10 +175,10 @@
 					  
 					</div>
 				  </div>
-				<div class="panel panel-default" style="height:380px; margin-top:20px;background-color: rgba(230,238,255,0.5);">
+				<div id="3dpanel" class="panel panel-default dpanel" style="">
 				<div class="panel-body">
-				<div class="row text-center">
-				<iframe src="https://lagoa.com/embed_links/7342?validationHash=ZeOLw0hs1wVbl_NgaUpHdzjjBsFvqw&width=500&height=280&auto_load_scene=true&asset_name=false&owner_name=false&lagoa_logo=false&version_number=21" 
+				<div class="row text-center" >
+				<iframe style="width: 100%;height: 80%;"src="https://lagoa.com/embed_links/7342?validationHash=ZeOLw0hs1wVbl_NgaUpHdzjjBsFvqw&width=500&height=280&auto_load_scene=true&asset_name=false&owner_name=false&lagoa_logo=false&version_number=21" 
 				id="lagoaframe" width="500" height="280" scrolling="no" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				</div>
 				<div class="text-right" style="margin-top:10px; margin-right:10px;">
