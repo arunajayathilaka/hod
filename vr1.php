@@ -110,7 +110,7 @@ require_once 'init.php';
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default" style="background-color: rgba(230,238,255,0.5);">
-					<div class="panel-body" style="height:240px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+					<div class="panel-body" id="jtype" style="height:240px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
 					<div id="f4">
 					       <label class="span6" for="jewelleryType" style="padding-top:6px">Select Jewelry Type </label>
                        <select class="span6" id="jewelleryType" onchange='showJewellery()'>
@@ -126,6 +126,18 @@ require_once 'init.php';
                     
 					
 					
+					</div>
+                                            
+                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                            <a id="" value="neck1.png" role="button"><img src="img/vr/neck1.png" style="height:100;width:100" alt=""></a>							
+					</div>
+                                        
+                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                            <a id="" value="neck2.png" role="button"><img src="img/vr/neck2.png" style="height:100;width:100" alt=""></a>							
+					</div>
+                                            
+                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                            <a id="" value="neck3.png" role="button"><img src="img/vr/neck3.png" style="height:100;width:100" alt=""></a>							
 					</div>
 					
 				</div>

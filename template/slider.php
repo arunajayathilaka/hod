@@ -1,4 +1,4 @@
-<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="3000" id="bs-carousel" style="height:450px;">
   <!-- Overlay -->
   <div class="overlay"></div>
 
@@ -10,7 +10,7 @@
   </ol>
   
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner" style="height:450px;">
     <div class="item slides active">
       <div class="slide-1"></div>
       <div class="hero">

@@ -43,7 +43,7 @@
 			</div>
 			</div>
 		</div>	
-		<div class="row" style="margin-bottom:2px;">
+		<div class="row" style="margin-bottom:2px;margin-left:10px;">
 				<small class="text-center" style="color:white;">&#169Copyright -- House Of Diamante , 2016.</small>
 		</div>
  ';

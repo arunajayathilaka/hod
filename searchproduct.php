@@ -1,15 +1,23 @@
 <?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 require_once 'init.php';
 
-function listall(){
-$link=new mysqli("localhost","root","","houseofdiamante");
-$productQuery=mysqli_query($link,"SELECT product_items.product_name,product_items.product_dec,product_items.product_price,product_items.image_url FROM product_items");
+if(isset($_POST['sname'])){
+    $sname=$_POST['sname'];
+    $sname=preg_replace("#[^0-9a-z]#i","",$sname);
 
-while($row=mysqli_fetch_array($productQuery)){
+    $sql=mysqli_query($link,"SELECT * FROM product_items WHERE product_items.product_name LIKE '%{$sname}%'");
+    while($row=mysqli_fetch_array($sql)){
 	$products[]=$row;
-}
-
-foreach($products as $product1){
+    }
+    if(mysqli_num_rows($sql)>0){
+    foreach($products as $product1){
     echo '
 	<div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail" style="background-color: rgba(230,238,255,0.5); border: 1px solid #218dfb;">
@@ -32,5 +40,13 @@ foreach($products as $product1){
 	</div>
     ';
 }
+    
+                
 }
+else{
+    echo 'search not available';
+}
+}
+
+
 ?>

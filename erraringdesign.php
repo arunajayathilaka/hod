@@ -17,11 +17,15 @@
 	
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/home.css" rel="stylesheet">
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
-     
+	<link href="css/home.css" rel="stylesheet">
 	
-    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 	<style>
 	.clickable{
 		cursor: pointer;   
@@ -72,26 +76,17 @@
         <div class="row">
 			<div class="col-md-3">
 			
-				 
-                                        <div class="panel panel-default"style="margin-top:20px;background-color: rgba(230,238,255,0.5);">
-					<div class="panel-heading">Types</div>
-                                        <div class="panel-body" style="height:338px; overflow-y: scroll;overflow-x:hidden; white-space:nowrap;">
-					<div id="f4">
-					<?php 
-						$sql3q1=mysqli_query($link,"SELECT * FROM ringtype");
-						 while($row=mysqli_fetch_array($sql3q1)){
-						 $ringtypes[]=$row;	
-						}
-					?>
-					<?php foreach($ringtypes as $ringtype): ?>
-						<div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 5px 5px 5px 5px;">
-							<a id="<?php echo $ringtype['id']; ?>" value="<?php echo $ringtype['gem_n']; ?>" role="button"><img src="<?php echo $ringtype['image_url']; ?>" alt=""></a>							
+				<div class="panel panel-default" style="height:380px; margin-top:20px; background-color: rgba(230,238,255,0.5);">
+					<div class="panel-body" id="gemcat">
+						<div class="span12" style="text-align: center">      
+							<h1 id="gemtype">Gem of Sri Lanka</h1>
+							<img src="img/gem/gem.jpg"style="height:100px;" alt="">
+							<p>A gemstone is the naturally occurring crystalline form of a mineral which is desirable for its beauty, 
+							valuable in its rarity, and durable enough to be enjoyed for generations. There are more than 30
+							popular gem varieties.
+							</p>
 						</div>
-					<?php endforeach;?>
 					</div>
-					</div>
-					
-			
 					
 				</div>
 			</div>
@@ -187,7 +182,7 @@
 				id="lagoaframe" width="500" height="280" scrolling="no" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				</div>
 				<div class="text-right" style="margin-top:10px; margin-right:10px;">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Call Quotation</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Quotation</button>
 				</div>
 				</div>
 				
@@ -272,7 +267,29 @@
 			</div>
            
         </div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default"style="background-color: rgba(230,238,255,0.5);">
+					<div class="panel-body" style="height:145px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+					<div id="f4">
+					<?php 
+						$sql3q1=mysqli_query($link,"SELECT * FROM ringtype");
+						 while($row=mysqli_fetch_array($sql3q1)){
+						 $ringtypes[]=$row;	
+						}
+					?>
+					<?php foreach($ringtypes as $ringtype): ?>
+						<div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 5px 5px 5px 5px;">
+							<a id="<?php echo $ringtype['id']; ?>" value="<?php echo $ringtype['gem_n']; ?>" role="button"><img src="<?php echo $ringtype['image_url']; ?>" alt=""></a>							
+						</div>
+					<?php endforeach;?>
+					</div>
+					</div>
+					
+				</div>
+			</div>
 		
+		</div>
        
         
         
@@ -331,7 +348,7 @@
 			$.ajax({
 						url:'insertqoutation.php',
 						method:'POST',
-						data:{fullname:fullname,email:email,phone_n:phone_n,ring_s:ring_s,carrot_w:carrot_w,metal:metal,gemstone:gemstone,centercut:centercut,image_url:image_url},
+						data:{fullname:fullname,email:email,phone_n:phone_n,ring_s,ring_s,carrot_w:carrot_w,metal:metal,gemstone:gemstone,centercut:centercut,image_url:image_url},
 						success:function(data){
 							alert(data);
 							//$('#image').html(data);
@@ -649,7 +666,15 @@
 		$('#gemstone').val(value.replace("edit_gem_",''));
 		pickgemMaterial(value);
 		//ajax php code for getting gem details from db
-		
+		$.ajax({
+				url:'gemretrive.php',
+				method:'POST',
+				data:{gemid: id},
+				success:function(data){
+					//alert("done");
+					$('#gemcat').html(data);
+				}
+		});
 		
 	});
 	

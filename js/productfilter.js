@@ -37,10 +37,32 @@ $(document).ready(function(){
 		$('input[type=checkbox]').on("click",Checked );
 				}
 				pro();
-				$('.center .s img').on('click',function(){
+				 $('#vendorname').on('change',function(){
 					//alert("re");
-					vendor=$(this).attr('value');
-					document.getElementById("lead").innerHTML=vendor;
+                                        var selected=$("option:selected",this).val();
+                                       // alert(selected);
+                                        if (selected=="Vendor Name"){
+                                            $('#lead').addClass("dsplay");
+                                            $('#simg').addClass("dsplay");
+                                            $('#rating').addClass("dsplay");
+                                            $.ajax({
+						url:'autoproductlist.php',
+						method:'POST',
+						data:{},
+						success:function(data){
+							//alert("done");
+							$('#productlist').html(data);
+							pro();
+						}
+					});
+                                        }
+                                        else{
+                                            $('#lead').removeClass("dsplay");
+                                            $('#simg').removeClass("dsplay");
+                                            $('#rating').removeClass("dsplay");
+                                        
+					vendor=selected;
+					//document.getElementById("lead").innerHTML=vendor;
 					//$('#rate').html(<?php echo 'updaterate(id)';?>);
 					//alert(vendor);
 					$.ajax({
@@ -64,7 +86,7 @@ $(document).ready(function(){
 					});
 					
 					return false;
-					});
+                                    }});
 				$('#type a').on('click',function(){
 					var type=$(this).attr('value');
 					//document.getElementById("lead").innerHTML=vendor;
@@ -85,6 +107,21 @@ $(document).ready(function(){
 					return false;
 					});
 					
+                                        
+     $('#pgo').on('click',function(){
+           var sname=$('#psearch').val();
+           
+           $.ajax({
+               url:'searchproduct.php',
+               method:'POST',
+               data:{sname:sname},
+               success:function(data){
+                   
+                   $('#productlist').html(data);
+                   pro();
+               }
+           });
+        });
 	//ratings
 	
 	$('.rate-btn').hover(function(){

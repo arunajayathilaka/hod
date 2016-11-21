@@ -14,7 +14,7 @@ if(isset($_POST['shopvendor'])){
 		foreach($products as $product1){
 			echo '
 				<div class="col-sm-4 col-lg-4 col-md-4">
-								<div class="thumbnail" style="background-color: rgba(230,238,255,0.5); border: 3px solid #218dfb;">
+								<div class="thumbnail" style="background-color: rgba(230,238,255,0.5); border: 1px solid #218dfb;">
 									<img src="'.$product1['image_url'].'"style="height:30%; alt="">
 									<div class="caption">
 										<h4 class="pull-right">'.$product1['product_price'].'</h4>

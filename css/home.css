@@ -64,15 +64,18 @@ a:hover{
 	margin-top: 10px;
 	background-color: #3D3D3D;
 	border: none;
-	
+	margin-bottom: 0px;
 	text-align: center;
+        
 }
+
 .navbar ul li{
 	background:none;
+       
 }
 .navbar-default .navbar-nav > li > a{
-    font-family: Berlin Sans FB;
-    font-size: 23px;
+    font-family: 'Domine', serif;
+    font-size: 20px;
     color: #E1E1E1;  
     margin-bottom:-5px;
 }
@@ -88,6 +91,7 @@ a:hover{
 
 .navbar .navbar-collapse {
   text-align: center;
+ 
 }
 
 /*.navbar-default .navbar-nav > ul {
@@ -104,8 +108,8 @@ a:hover{
 	/*text-align: left;*/
 	font: bold 16px sans-serif;
 	
-	padding: 55px 50px;
-	margin-top: 80px;
+	
+	margin-top: 40px;
 	
 	
 }
@@ -125,7 +129,7 @@ footer{
 	bottom: 0;
 }
 
-@media (max-height:800px){
+@media (max-height:1500px){
 	footer { position: static; }
 	header { padding-top:40px; }
 }

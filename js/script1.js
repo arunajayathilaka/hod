@@ -1,4 +1,5 @@
 // webrtc script file
+var img1;
 var webrtc = (function() {
 
     var getVideo = true,
@@ -91,7 +92,16 @@ var webrtc = (function() {
         downloadCanvas(this,'photo','test.png');
     }, false);
     
-    
+    function additem(item){
+        var name="img/vr/";
+        name+=item;
+        var canvas=new fabric.Canvas('photo');
+        fabric.Image.fromURL(name, function(img2) {
+            canvas.remove(img1);
+            img1=img2;
+        canvas.add(img1.set({ left: 250, top: 150, angle:0 }).scale(0.25));
+    });
+    }
     function takePhoto() {
         
         display.style.visibility='hidden';
@@ -107,7 +117,11 @@ var webrtc = (function() {
 		var canvas=new fabric.Canvas('photo');
 		//canvas.clear();
 		alert("done");
-        canvas.add(new fabric.Circle({ radius: 30, fill: '#f55'}));
+        //canvas.add(new fabric.Circle({ radius: 30, fill: '#f55'}));
+        fabric.Image.fromURL('img/vr/neck1.png', function(img2) {
+            img1=img2;
+        canvas.add(img1.set({ left: 250, top: 150, angle:0 }).scale(0.25));
+    });
 		//canvas.add(new fabric.Image.fromURL('../img/like.png',function(img) {
             /*img.set({
                 left: fabric.util.getRandomInt(0, 10),
@@ -117,7 +131,7 @@ var webrtc = (function() {
             });
             img.scale(fabric.util.getRandomInt(10, 50) / 10);
         canvas.add(img);
-        }); */ 
+        }); */
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
         
         
@@ -159,6 +173,12 @@ var webrtc = (function() {
         initEvents();
     }());
 })();
+
+$('#jtype a').on('click',function(){
+    var value=$(this).attr('value');
+    //alert(value);
+    additem(value);
+});
 
 
 

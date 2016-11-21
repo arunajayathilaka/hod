@@ -24,6 +24,9 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/thumbnail-gallery.css" rel="stylesheet">
 		<link href="css/home.css" rel="stylesheet">
+              
+                <!-- bxSlider CSS file -->
+                <link href="css/jquery.bxslider.css" rel="stylesheet" />
 		
 	</head>
 	 <style type="text/css">
@@ -48,6 +51,10 @@
     .slick-slide img {
       width: 100%;
     }
+    
+    .dsplay{
+        display:none;
+    }
 
     .slick-prev:before,
     .slick-next:before {
@@ -67,49 +74,13 @@
 		
 	
 		<div class="container">
-			<div class="row">
-				<div id="content1"  class="center slider"  style="background-color: rgba(230,238,255,0.4); height:auto; width:80%;">
-					 <div class="s" value="Neha Jewellery" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
-					  <img value="Neha Jewellery" onclick="document.getElementById('shopImage').src='img/als-images/n.png' " src="img/als-images/n.png">
-					</div>
-					<div class="s" value="mallika" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
-					  <img value="mallika" onclick="document.getElementById('shopImage').src='img/als-images/h.png'" src="img/als-images/h.png">
-					</div>
-					<div class="s" value="cjs" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
-					  <img value="cjs" onclick="document.getElementById('shopImage').src='img/als-images/cjs.png'" src="img/als-images/cjs.png">
-					</div>
-					<div class="s" value="kendra scot" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
-					  <img value="kendra scot" onclick="document.getElementById('shopImage').src='img/als-images/ks.png'" src="img/als-images/ks.png">
-					</div>
-					<div class="s" value="ambika jewellers" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
-					  <img value="ambika jewellers" onclick="document.getElementById('shopImage').src='img/als-images/ambika-jewellers.png'" src="img/als-images/ambika-jewellers.png">
-					</div>
-					
-				<!---	
-					<div id="lista1" class="als-container">
-						<span class="als-prev"><img src="img/listscroller/thin_left_arrow_333.png" alt="prev" title="previous" /></span>
-						<div class="als-viewport" id="vendorlt">
-							<ul class="als-wrapper">
-								<li class="als-item" value="Neha Jewellery" style="background-color:rgba(230,238,255,0.5); padding-bottom:24px;padding-left:15px;padding-right:15px;"onclick="document.getElementById('shopImage').src='img/als-images/n.png'"><img src="img/als-images/n.png"/>Neha Jewellers</li>
-								<li class="als-item" value="mallika" style="background-color:rgba(230,238,255,0.5); padding-bottom:24px;padding-left:15px;padding-right:15px;" onclick="document.getElementById('shopImage').src='img/als-images/h.png'"><img src="img/als-images/h.png"/>Mallika</li>
-								<li class="als-item" value="cjs" style="background-color:rgba(230,238,255,0.5); padding-bottom:24px;padding-left:15px;padding-right:15px;" onclick="document.getElementById('shopImage').src='img/als-images/cjs.png'"><img src="img/als-images/cjs.png"/>CJS</li>
-								<li class="als-item" value="kendra scot" style="background-color:rgba(230,238,255,0.5); padding-bottom:24px;padding-left:15px;padding-right:15px;" onclick="document.getElementById('shopImage').src='img/als-images/ks.png'"><img src="img/als-images/ks.png"/>Kendra Scot</li>
-								<li class="als-item" value="ambika jewellers" style="background-color:rgba(230,238,255,0.5); padding-bottom:24px;padding-left:15px;padding-right:15px;" onclick="document.getElementById('shopImage').src='img/als-images/ambika-jewellers.png'"><img src="img/als-images/ambika-jewellers.png"/>Ambika Jewellers</li>
-								<!--<li class="als-item"><img src="images/als-images/cut.png" alt="scissors" title="scissors" />scissors</li>
-								<li class="als-item"><img src="images/als-images/heart.png" alt="heart" title="heart" />heart</li>
-								<li class="als-item"><img src="images/als-images/map.png" alt="pin" title="pin" />pin</li>
-								<li class="als-item"><img src="images/als-images/mobile_phone.png" alt="mobile phone" title="mobile phone" />mobile phone</li>
-								<li class="als-item"><img src="images/als-images/camera.png" alt="camera" title="camera" />camera</li>
-								<li class="als-item"><img src="images/als-images/music_note.png" alt="music note" title="music note" />music note</li>
-								<li class="als-item"><img src="images/als-images/protection.png" alt="umbrella" title="umbrella" />umbrella</li>
-								<li class="als-item"><img src="images/als-images/television.png" alt="television" title="television" />television</li>-->
-								<!--
-							</ul>
-						</div>
-						<span class="als-next"><img src="img/listscroller/thin_right_arrow_333.png" alt="next" title="next" /></span>
-					</div>
-					-->
-				</div>
+			<div class="row" style="margin-top:25px;">
+                            <ul class="bxslider">
+                                    <li><img src="http://placehold.it/1200x250" /></li>
+                                    <li><img src="http://placehold.it/1200x250" /></li>
+                                    <li><img src="http://placehold.it/1200x250" /></li>
+                                    <li><img src="http://placehold.it/1200x250" /></li>
+                                </ul>
 			</div>
 			<div class="row">
 				<!-- Modal -->
@@ -146,55 +117,21 @@
 						  
 						</div>
 					</div>
-					<div class="col-md-8">
-						<div class="row">
-						
-							<form class="navbar-form" role="search">
-								<div class="input-group">
-								  <input class="form-control" style="color:"placeholder="Search">
-								  <div class="input-group-btn">
-									<button class="btn btn-info" type="button">GO!</button>
-									
-								  </div>
-								 
-								</div>
-								 <button id="comparenow" class="btn btn-info pull-right" type="button" data-toggle="modal" data-target="#myModal" disabled>Compare Now</button>
-							</form>
-							
-						
-						<hr>
-						</div>
-						<div id="productlist">
-						<?php foreach($products as $product1):?>
-						<div class="col-sm-4 col-lg-4 col-md-4">
-							<div class="thumbnail" style="background-color: rgba(230,238,255,0.5); border: 3px solid #218dfb;">
-								<img src="<?php echo $product1['image_url']; ?>" style="height:30%;" alt="">
-								<div class="caption">
-									<h4 class="pull-right"><?php echo $product1['product_price']; ?></h4>
-									<h4><a style="color:white;"href="#"><?php echo $product1['product_name']; ?></a>
-									</h4>
-									<p><?php echo $product1['product_dec']; ?></p>
-								</div>
-								
-								<div>
-									<form role="form">
-										<div class="checkbox">
-										  <label><input id="compare" type="checkbox" value="<?php echo $product1['product_name']; ?>">compare</label>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<?php endforeach; ?>
-						</div>
-					</div>
-					
-					<div class="col-md-4">
-						 <p id="lead" class="lead" style="color:white;">Shop Name</p>
-							<div class="thumbnail" style="height:250px;background-color: rgba(230,238,255,0.5);  width:250px;border: 3px solid #218dfb;">
+                <div class="col-md-4">
+                    <select id="vendorname" class="form-control" style="">
+                        <option>Vendor Name</option>
+                        <option value="Neha Jewellery" onclick="document.getElementById('shopImage').src='img/als-images/n.png' ">Neha Jewellery</option>
+                        <option value="mallika" onclick="document.getElementById('shopImage').src='img/als-images/h.png'">mallika</option>
+                        <option value="cjs" onclick="document.getElementById('shopImage').src='img/als-images/cjs.png'">cjs</option>
+                        <option value="kendra scot" onclick="document.getElementById('shopImage').src='img/als-images/ks.png'">kendra scot</option>
+                        <option value="ambika jewellers" onclick="document.getElementById('shopImage').src='img/als-images/ambika-jewellers.png'">ambika jewellers</option>
+                    </select>
+                    
+                    
+							<div id="simg"class="thumbnail dsplay" style="margin-top:10px;height:250px;background-color: rgba(230,238,255,0.5);  width:250px;border: 1px solid #218dfb;">
                             <img id="shopImage" src="img/selectv.png" alt="">
 							</div>
-							<div class="ratings" >
+							<div id="rating" class="ratings dsplay" style="">
                                 
                                 <div>
 									<div id="1" class="rate-btn"><span class="rate-btn-1 icon"></span></div>
@@ -206,12 +143,38 @@
 								<div id="rate">
 								</div>
                             </div>
-							<div id="type" class="list-group">
+                    <div id="type" class="list-group" style="padding-top:20px;">
 								<a class="list-group-item" style="background-color: rgba(230,238,255,0.5); cursor:pointer; margin-bottom:10px;" value="ring">Rings</a>
 								<a class="list-group-item" style="background-color: rgba(230,238,255,0.5);cursor:pointer; margin-bottom:10px;" value="earings">Earings</a>
 								<a class="list-group-item" style="background-color: rgba(230,238,255,0.5);cursor:pointer; margin-bottom:10px;" value="neckles">Neckles</a>
 							</div>
+		</div>
+					<div class="col-md-8">
+						<div class="row">
+						
+							<form class="navbar-form" role="search">
+								<div class="input-group">
+								  <input id="psearch" class="form-control" style="color:"placeholder="Search">
+								  <div class="input-group-btn">
+									<button id="pgo" class="btn btn-info" type="button">GO!</button>
+									
+								  </div>
+								 
+								</div>
+								 <button id="comparenow" class="btn btn-info pull-right" type="button" data-toggle="modal" data-target="#myModal" disabled>Compare Now</button>
+							</form>
+							
+						
+						<hr>
+						</div>
+						<div id="productlist">
+                                                    <?php
+                                                        listall();
+                                                    ?>
+						</div>
 					</div>
+					
+		
 					
 			</div>
 		
@@ -226,6 +189,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		
 		<script src="js/productfilter.js"></script>
+                  <script src="js/jquery.bxslider.min.js"></script>
 		<script type="text/javascript">
 		function btnfunc(){
 			comparenow.disabled=true; 
@@ -277,5 +241,15 @@
 			});
 			
 		</script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+        $('.bxslider').bxSlider({
+                auto: true
+               
+        });
+        
+        
+      });
+     </script>
 	</body>
 </html>

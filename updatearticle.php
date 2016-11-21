@@ -11,7 +11,7 @@ else{
 }
 	$sname=preg_replace("#[^0-9a-z]#i","",$sname);
 	//$name="article 3";
-	$articleQuery=mysqli_query($link,"SELECT * FROM articles");
+	$articleQuery=mysqli_query($link,"SELECT * FROM articles WHERE articles.title_name LIKE '%{$sname}%'");
 
 $likesq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_likes WHERE articles_like.user='{$user}'AND articles_like.type='like'");
 $loveq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_love WHERE articles_like.user='{$user}'AND articles_like.type='love'");

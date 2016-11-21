@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2016 at 05:37 PM
+-- Generation Time: Nov 21, 2016 at 08:39 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -402,7 +402,8 @@ CREATE TABLE `quotation` (
 
 INSERT INTO `quotation` (`id`, `full_name`, `mobile_num`, `email`, `ring_size`, `carrot_w`, `metal`, `gemstone`, `center_cut`, `image_url`) VALUES
 (2, 'kl', 'jkhkl', 'glg', '14ct', 'Size 5', 'kjhlk', 'jhjkh', 'jhljhl', 'img/quotation/WIN_20160107_230133.JPG'),
-(3, 'dfgdf', 'ssdh', 'fdhdf', '14ct', 'Size 5', 'Gold', 'red', 'heart', 'img/ring type/type1.png');
+(3, 'dfgdf', 'ssdh', 'fdhdf', '14ct', 'Size 5', 'Gold', 'red', 'heart', 'img/ring type/type1.png'),
+(4, 'sgsgg', 'dsg', 'gsd', '14ct', 'Size 5', 'Gold', 'blue', 'oval', 'img/ring type/type1.png');
 
 -- --------------------------------------------------------
 
@@ -686,7 +687,7 @@ ALTER TABLE `product_items`
 -- AUTO_INCREMENT for table `quotation`
 --
 ALTER TABLE `quotation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `rating`
 --
