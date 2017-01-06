@@ -16,6 +16,8 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Belleza|Domine|Slabo+27px" rel="stylesheet"> 
+		
     <!-- Custom CSS -->
     <link href="css/home.css" rel="stylesheet">
     <link href="css/thumbnail-gallery.css" rel="stylesheet">

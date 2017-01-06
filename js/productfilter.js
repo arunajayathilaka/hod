@@ -36,15 +36,23 @@ $(document).ready(function(){
 		 
 		$('input[type=checkbox]').on("click",Checked );
 				}
+                                
+                                
+                                function slider(){
+                                     $('.bxslider').bxSlider({
+                                         auto: true
+                                    });
+                                }
 				pro();
 				 $('#vendorname').on('change',function(){
 					//alert("re");
                                         var selected=$("option:selected",this).val();
                                        // alert(selected);
                                         if (selected=="Vendor Name"){
-                                            $('#lead').addClass("dsplay");
+                                            /*$('#lead').addClass("dsplay");
                                             $('#simg').addClass("dsplay");
-                                            $('#rating').addClass("dsplay");
+                                            $('#rating').addClass("dsplay");*/
+                                            $('#vpanel').addClass("dsplay");
                                             $.ajax({
 						url:'autoproductlist.php',
 						method:'POST',
@@ -57,10 +65,11 @@ $(document).ready(function(){
 					});
                                         }
                                         else{
-                                            $('#lead').removeClass("dsplay");
+                                           /* $('#lead').removeClass("dsplay");
                                             $('#simg').removeClass("dsplay");
-                                            $('#rating').removeClass("dsplay");
-                                        
+                                            $('#rating').removeClass("dsplay");*/
+                                            $('#vpanel').removeClass("dsplay");
+                                            slider();
 					vendor=selected;
 					//document.getElementById("lead").innerHTML=vendor;
 					//$('#rate').html(<?php echo 'updaterate(id)';?>);
@@ -82,6 +91,18 @@ $(document).ready(function(){
 						success:function(data){
 							//alert("done");
 							$('#rate').html(data);
+						}
+					});
+                                        $.ajax({
+						url:'detaildisplay.php',
+						method:'POST',
+						data:{shopvendor:vendor},
+						success:function(data1){
+							//alert(data1);
+                                                        var data = JSON.parse(data1)
+							$('#head').html(data.vendor_name);
+                                                        $('#address').html(data.telephone);
+                                                        $('#contact').html(data.vAddress);
 						}
 					});
 					

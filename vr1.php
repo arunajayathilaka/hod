@@ -16,6 +16,8 @@ require_once 'init.php';
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Belleza|Domine|Slabo+27px" rel="stylesheet"> 
+		
     <!-- Custom CSS -->
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
@@ -31,7 +33,6 @@ require_once 'init.php';
 	.clickable{
 		cursor: pointer;   
 	}
-
 	.panel-heading span {
 		margin-top: -20px;
 		font-size: 15px;
@@ -42,7 +43,6 @@ require_once 'init.php';
 		opacity: 0.5;
 		filter: alpha(opacity=50);
 	}
-
 	</style>
 </head>
 
@@ -67,6 +67,13 @@ require_once 'init.php';
 				<div class="panel panel-default" style="height:380px; margin-top:20px; background-color: rgba(230,238,255,0.5);">
 					<div class="panel-body">
 						<canvas id="display" width="715" height="345" style="position:absolute; "></canvas>
+                                                <img id="mask" src="img/frame.png" 
+                                                    style="position: absolute; 
+                                                           left: 32px; 
+                                                           top:36px;
+                                                           z-index: 2;
+                                                           width: 715px;
+                                                           height:345px;" />
 						<canvas id="photo" width="715" height="345" style="position:absolute; "></canvas>
 					
 						<div class="text-right">
@@ -174,4 +181,3 @@ require_once 'init.php';
 </body>
 
 </html>
-

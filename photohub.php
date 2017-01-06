@@ -77,6 +77,8 @@ $row4=mysqli_num_rows($hahaq);
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Belleza|Domine|Slabo+27px" rel="stylesheet"> 
+		
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,7 +89,15 @@ $row4=mysqli_num_rows($hahaq);
 </head>
 
 <body style="background-color:#E1E1E1; background-size: 100% 100%;" >
-
+ <div id="fb-root"></div>
+    
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 		<?php 
 		if(isset($_SESSION['er']) && $_SESSION['er']=="true"){$_SESSION['er1']="true";}
 		else{$_SESSION['er1']="false";}?>
@@ -101,7 +111,7 @@ $row4=mysqli_num_rows($hahaq);
         <div class="row">
 			
             <div class="col-lg-12">
-                <h1 class="text-center" style="color:white;">Diamante Photohub</h1>
+                <h1 class="text-center" style="color:black;">Diamante Photohub</h1>
 				
             </div>
 			
@@ -123,7 +133,7 @@ $row4=mysqli_num_rows($hahaq);
 			
 			<?php foreach($articles1 as $article1):?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                <div class="thumbnail"style="width:280px;background-color: rgba(230,238,255,0.5); border: 3px solid #218dfb;">
+                <div class="thumbnail"style="width:280px;background-color: rgba(230,238,255,0.5); border: 1px solid #218dfb;">
                 
                     <img class="img-responsive" src="<?php echo $article1['image_url']; ?>" style="height:30%;" alt="">
                 
@@ -170,7 +180,12 @@ $row4=mysqli_num_rows($hahaq);
                                             $sid.=$article1['id'];
                                         ?>
 					<span id="<?php echo $sid; ?>" class="badge"><?php echo $article1['hahas']; ?></span>
-					</p>
+				</p>
+                                <div class="fb-share-button" data-href="<?php echo 'http://188.166.179.166/hod/'.$article1['image_url']; ?>" data-layout="icon_link" data-mobile-iframe="true">
+                                    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">
+                                        Share
+                                    </a>
+                                </div>
 					
 				</div>
                 </div>
@@ -266,7 +281,7 @@ $row4=mysqli_num_rows($hahaq);
 	});
 	});
 	</script>
-    
+   
     
 
 </body>

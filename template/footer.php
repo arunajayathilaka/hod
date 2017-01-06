@@ -39,7 +39,7 @@
 			<div class="text-center">
 			
 			<h1 style="color:#93d0c5;">About</h1>
-			<p class=""style="padding-left:0px;">We are the no.1 online jewellery shopping providers.You can get new experience with designing jewellery by yourself and many more with virtual mirror facility,Photo-Hub.Send your request to favourite jewellery vendor and get the quotation for the item without moving anywhere.</p>
+			<p class=""style="padding-left:0px;">We are the no.1 online jewellery shopping providers.</p>
 			</div>
 			</div>
 		</div>	

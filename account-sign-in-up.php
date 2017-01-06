@@ -24,9 +24,9 @@
 		
 	   
 			<div class="row" id="authe" style="float:right; height:20px" >
-    			<a src="#" style="text-decoration: none !important; cursor:pointer; margin-right:10px;" id="signin"><span class="glyphicon glyphicon-user"></span> Sign In</a>
+    			<a src="#" style="text-decoration: none !important; cursor:pointer; margin-right:10px; color:black;" id="signin"><span class="glyphicon glyphicon-user"></span> Sign In</a>
 
-    			<a src="#" style="text-decoration: none !important; cursor:pointer;margin-right:20px;" id="login"><span class="glyphicon glyphicon-log-in"></span> Log In</a>
+    			<a src="#" style="text-decoration: none !important; cursor:pointer;margin-right:20px; color:black;" id="login"><span class="glyphicon glyphicon-log-in"></span> Log In</a>
 	    	</div>
 			
 			
@@ -48,10 +48,10 @@
 					<form method="post" action="checklogin.php">
 						<input type="email" id="eml"name="u" placeholder="Username/Email" required="required"/>
 						<input type="password" id="pwd" name="p" placeholder="Password" required="required"/>
-						<button id="letmein"type="submit" > Let me in</button>
+						<button id="letmein"type="submit" > Sign in</button>
 					</form>
                                         
-					<p style="padding-left:0px;color:white;"><a style="color:white;">I forgot my password</a></p>
+					<p style="padding-left:0px;color:white;"><a style="color:black;">I forgot my password</a></p>
 				</div>
 			</div>
 			<div class="col-md-6 text-center" style=" height:auto;border-left: 2px solid #333;">
@@ -72,7 +72,7 @@
 				
 				</div>
 				<p style="padding-left:0px;">By creating an account, you agree to Blue Nile's Terms and conditions and Privacy Policy</p>
-				<button id="takemein" type="submit" > Take me in</button>
+				<button id="takemein" type="submit" > Sign up</button>
 			</form>
 					
 				</div>

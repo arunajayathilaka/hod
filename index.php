@@ -14,8 +14,8 @@ require_once'init.php';
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <!--<link rel="stylesheet" href="css/index.css">-->
-  
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+ 
 	
  <link rel="stylesheet" href="css/home.css">
  <link rel="stylesheet" href="css/slider.css">
@@ -115,19 +115,19 @@ require_once'init.php';
     
     <div class="row">
 				<div id="content1"  class="center slider"  style="height:auto; width:80%;">
-					 <div class="s" value="Neha Jewellery" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
+					 <div class="s" value="Neha Jewellery" style="cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
 					  <img value="Neha Jewellery"  src="img/als-images/n.png">
 					</div>
-					<div class="s" value="mallika" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
+					<div class="s" value="mallika" style="cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
 					  <img value="mallika"  src="img/als-images/h.png">
 					</div>
-					<div class="s" value="cjs" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
+					<div class="s" value="cjs" style="cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
 					  <img value="cjs"  src="img/als-images/cjs.png">
 					</div>
-					<div class="s" value="kendra scot" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
+					<div class="s" value="kendra scot" style="cursor:pointer; height:auto; padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
 					  <img value="kendra scot"  src="img/als-images/ks.png">
 					</div>
-					<div class="s" value="ambika jewellers" style="background-color:rgba(230,238,255,0.5); cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
+					<div class="s" value="ambika jewellers" style="cursor:pointer; height:auto;padding-top:24px; padding-bottom:24px;padding-left:15px;padding-right:15px;">
 					  <img value="ambika jewellers"  src="img/als-images/ambika-jewellers.png">
 					</div>
                                 </div>
@@ -145,7 +145,7 @@ require_once'init.php';
 <script src="js/slick.js"></script>
 <script type="text/javascript">
     $(function(){
-//$('#bs-carousel').carousel();
+    //$('#bs-carousel').carousel();
     });
     
     $(document).ready(function() 

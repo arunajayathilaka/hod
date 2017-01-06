@@ -30,6 +30,9 @@ ul.bxslider {
   list-style: none;
 }
 .bx-viewport {
+   
+    
+   
   /*fix other elements on the page moving (on Chrome)*/
   -webkit-transform: translatez(0);
 }
@@ -41,6 +44,7 @@ ul.bxslider {
   box-shadow: 0 0 5px #ccc;
   border: 5px solid #fff;
   background: #fff;
+  margin-bottom: 30px;
 }
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {

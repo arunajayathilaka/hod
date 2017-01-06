@@ -11,7 +11,7 @@ while($row=mysqli_fetch_array($productQuery)){
 
 foreach($products as $product1){
     echo '
-	<div class="col-sm-4 col-lg-4 col-md-4">
+	<div class="col-xs-12 col-sm-4 col-lg-3 col-md-4">
             <div class="thumbnail" style="background-color: rgba(230,238,255,0.5); border: 1px solid #218dfb;">
 		<img src="'. $product1['image_url'].'" style="height:30%;" alt="">
 		<div class="caption">

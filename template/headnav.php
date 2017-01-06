@@ -29,19 +29,19 @@
               		
               			<ul class="nav navbar-nav">
 							<li>
-                        		<a href="index.php">Home</a>
+                        		<a href="index.php" style="font-size:20px;">Home</a>
                     		</li>
                     		<li>
-                        		<a href="showcase.php">Showcase</a>
+                        		<a href="showcase.php" style="font-size:20px;">Showcase</a>
                     		</li>
                     		<li>
-                       			<a href="design.php">Design</a>
+                       			<a href="design.php" style="font-size:20px;">Design</a>
                     		</li>
                     		<li>
-                        		<a href="vr1.php">Vmirror</a>
+                        		<a href="vr1.php" style="font-size:20px;">Vmirror</a>
                     		</li>
 					 		<li>
-                        		<a href="photohub.php">Photohub</a>
+                        		<a href="photohub.php" style="font-size:20px;">Photohub</a>
                     		</li>
                			</ul>
 						
