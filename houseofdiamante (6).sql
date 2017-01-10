@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2016 at 08:39 AM
+-- Generation Time: Jan 10, 2017 at 09:22 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `houseofdiamante`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(25) NOT NULL,
+  `admin_name` varchar(30) NOT NULL,
+  `admin_email` varchar(30) NOT NULL,
+  `telephone` int(25) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `Password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `telephone`, `username`, `Password`) VALUES
+(1, 'Aruna', 'aruna@gmail.com', 646564646, 'aruna', '1234');
 
 -- --------------------------------------------------------
 
@@ -234,7 +256,7 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`msg_id`, `sender`, `receiver`, `message`, `updated_date`, `updated_time`) VALUES
-(21, 'mythree', 'mallika', 'hello sir,can you help me??', '0000-00-00', '00:00:00'),
+(21, 'mythree', 'cjs', 'hello sir,can you help me??', '0000-00-00', '00:00:00'),
 (22, 'mythree', 'mallika', 'hello', '0000-00-00', '00:00:00'),
 (23, 'mallika', 'mythree', 'yes sir,i can....', '0000-00-00', '00:00:00'),
 (24, 'mythree', 'mallika', 'can i have quotation?', '0000-00-00', '00:00:00'),
@@ -264,19 +286,40 @@ CREATE TABLE `customerlogin` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(10) NOT NULL,
-  `image_url` varchar(250) NOT NULL
+  `image_url` varchar(250) NOT NULL,
+  `pro_pic` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customerlogin`
 --
 
-INSERT INTO `customerlogin` (`id`, `username`, `email`, `password`, `image_url`) VALUES
-(1, 'mythree', 'mythree@gmail.com', 'mythree', 'http://placehold.it/50x50'),
-(2, 'arunadj', 'arunadilshanjayathilake@yahoo.', '123', 'http://placehold.it/50x50'),
-(3, 'thila', 'thila@yahoo.com', 'thila', 'http://placehold.it/50x50'),
-(6, 'dad', 'dad@yahoo.com', 'df3939f119', 'http://placehold.it/50x50'),
-(7, 'jaya', 'jaya@gmail.com', 'ce9689abde', 'http://placehold.it/50x50');
+INSERT INTO `customerlogin` (`id`, `username`, `email`, `password`, `image_url`, `pro_pic`) VALUES
+(1, 'mythree', 'mythree@gmail.com', 'mythree', 'http://placehold.it/50x50', 'img/no_user.jpg'),
+(2, 'arunadj', 'arunadilshanjayathilake@yahoo.', '123', 'http://placehold.it/50x50', 'img/no_user.jpg'),
+(3, 'thila', 'thila@yahoo.com', 'thila', 'http://placehold.it/50x50', 'img/no_user.jpg'),
+(6, 'dad', 'dad@yahoo.com', 'df3939f119', 'http://placehold.it/50x50', 'img/no_user.jpg'),
+(7, 'jaya', 'jaya@gmail.com', 'ce9689abde', 'http://placehold.it/50x50', 'img/no_user.jpg'),
+(8, 'Tharindu', 'tharindu.ishanka1994@gmail.com', '123', '', 'http://placehold.it/50x50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dolist`
+--
+
+CREATE TABLE `dolist` (
+  `doId` int(11) NOT NULL,
+  `task` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dolist`
+--
+
+INSERT INTO `dolist` (`doId`, `task`) VALUES
+(1, 'drink coffee'),
+(2, 'go go go');
 
 -- --------------------------------------------------------
 
@@ -333,19 +376,24 @@ CREATE TABLE `notification` (
   `date` date NOT NULL,
   `vendor` varchar(15) NOT NULL,
   `customer` varchar(15) NOT NULL,
-  `view` varchar(10) NOT NULL
+  `view` varchar(10) NOT NULL,
+  `jewel_type` varchar(250) NOT NULL,
+  `size` decimal(10,0) NOT NULL,
+  `metal` varchar(255) NOT NULL,
+  `diamond` varchar(255) NOT NULL,
+  `price` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notification`
 --
 
-INSERT INTO `notification` (`not_id`, `date`, `vendor`, `customer`, `view`) VALUES
-(1, '2016-09-07', 'swarnamahal', 'Tharindu', 'yes'),
-(2, '2016-09-12', 'Nileka', 'Aruna', 'no'),
-(3, '2016-09-14', 'vogue', 'Tharindu', 'yes'),
-(4, '2016-09-21', 'manoma', 'Tharindu', 'yes'),
-(5, '2016-09-20', 'mallika', 'Tharindu', 'yes');
+INSERT INTO `notification` (`not_id`, `date`, `vendor`, `customer`, `view`, `jewel_type`, `size`, `metal`, `diamond`, `price`) VALUES
+(1, '2016-09-07', 'swarnamahal', 'Tharindu', 'yes', '', '25', 'Gold', 'Rose', '35000'),
+(2, '2016-09-12', 'Nileka', 'Aruna', 'no', '', '0', '', '', '0'),
+(3, '2016-09-14', 'vogue', 'Tharindu', 'yes', '', '0', 'Silver', 'Rose', '1000'),
+(4, '2016-09-21', 'manoma', 'Tharindu', 'yes', '', '0', 'silver', 'rose', '1200'),
+(5, '2016-09-20', 'mallika', 'Tharindu', 'yes', '', '0', 'gold', 'rose', '0');
 
 -- --------------------------------------------------------
 
@@ -393,17 +441,19 @@ CREATE TABLE `quotation` (
   `metal` varchar(250) NOT NULL,
   `gemstone` varchar(250) NOT NULL,
   `center_cut` varchar(250) NOT NULL,
-  `image_url` varchar(250) NOT NULL
+  `image_url` varchar(250) NOT NULL,
+  `vendor` varchar(30) NOT NULL,
+  `view` varchar(20) NOT NULL DEFAULT 'no',
+  `item_type` varchar(40) NOT NULL DEFAULT 'ring'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quotation`
 --
 
-INSERT INTO `quotation` (`id`, `full_name`, `mobile_num`, `email`, `ring_size`, `carrot_w`, `metal`, `gemstone`, `center_cut`, `image_url`) VALUES
-(2, 'kl', 'jkhkl', 'glg', '14ct', 'Size 5', 'kjhlk', 'jhjkh', 'jhljhl', 'img/quotation/WIN_20160107_230133.JPG'),
-(3, 'dfgdf', 'ssdh', 'fdhdf', '14ct', 'Size 5', 'Gold', 'red', 'heart', 'img/ring type/type1.png'),
-(4, 'sgsgg', 'dsg', 'gsd', '14ct', 'Size 5', 'Gold', 'blue', 'oval', 'img/ring type/type1.png');
+INSERT INTO `quotation` (`id`, `full_name`, `mobile_num`, `email`, `ring_size`, `carrot_w`, `metal`, `gemstone`, `center_cut`, `image_url`, `vendor`, `view`, `item_type`) VALUES
+(3, 'dfgdf', 'ssdh', 'fdhdf', '14ct', 'Size 5', 'Gold', 'red', 'heart', 'img/ring type/type1.png', 'cjs', 'yes', 'ring'),
+(4, 'sgsgg', 'dsg', 'gsd', '14ct', 'Size 5', 'Gold', 'blue', 'oval', 'img/ring type/type1.png', 'mallika', 'no', 'ring');
 
 -- --------------------------------------------------------
 
@@ -511,11 +561,41 @@ CREATE TABLE `vendor` (
 --
 
 INSERT INTO `vendor` (`id`, `vendor_name`, `vendor_email`, `vendor_username`, `vendor_password`, `image_url`, `telephone`, `vAddress`) VALUES
-(1, 'jkh', 'cjl@yahoo.com', 'cji210', 'cjl', '', 0, '');
+(2, 'mallika', 'ml@gmail.com', 'mallika', 'mala', '', 34225368, 'N0.45/7,Malwatta junction,Uggalboda'),
+(3, 'cjs', 'cjs@gmail.com', 'user1', 'cjs', 'img/vendor images/', 7123564, 'N0.34,ef,dcsghf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vr`
+--
+
+CREATE TABLE `vr` (
+  `image_id` int(11) NOT NULL,
+  `vendor_name` varchar(25) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `product_type` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vr`
+--
+
+INSERT INTO `vr` (`image_id`, `vendor_name`, `image`, `product_type`) VALUES
+(1, 'Kendra Scott', 'img\\vr\\neck1.png', 'Necklace'),
+(2, 'Neha jewellary', 'img\\vr\\neck2.png', 'Necklace'),
+(3, 'Neha jewellary', 'img\\vr\\neck3.png', 'Necklace'),
+(4, 'Kendra Scott', 'img/vr/neck4.png', 'Necklace');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `articles`
@@ -564,6 +644,12 @@ ALTER TABLE `chat`
 --
 ALTER TABLE `customerlogin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dolist`
+--
+ALTER TABLE `dolist`
+  ADD PRIMARY KEY (`doId`);
 
 --
 -- Indexes for table `gem`
@@ -620,9 +706,20 @@ ALTER TABLE `vendor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vr`
+--
+ALTER TABLE `vr`
+  ADD PRIMARY KEY (`image_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `articles`
 --
@@ -662,7 +759,12 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT for table `customerlogin`
 --
 ALTER TABLE `customerlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `dolist`
+--
+ALTER TABLE `dolist`
+  MODIFY `doId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `gem`
 --
@@ -707,7 +809,12 @@ ALTER TABLE `temp_customerlogin`
 -- AUTO_INCREMENT for table `vendor`
 --
 ALTER TABLE `vendor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `vr`
+--
+ALTER TABLE `vr`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
