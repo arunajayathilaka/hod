@@ -25,12 +25,18 @@ foreach($products as $product1){
             <form role="form">
 		<div class="checkbox">
                     <label><input id="compare" type="checkbox" value="'.$product1['product_name'].'">compare</label>
-		</div>
+                    <a title="virtual mirror available"><img class="pull-right"src="img/vricon.png" style="width:15%; padding-right:5px;"></a>
+                </div>
+                
+                
+                    
+               
             </form>
             </div>
 	</div>
 	</div>
     ';
 }
+return 0;
 }
 ?>

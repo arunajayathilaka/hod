@@ -135,7 +135,7 @@
 									</div>
 							</div>
 							<div id="image"></div>
-							<iframe style="display:none;" name="iframe"></iframe>
+                                            	<!--	<iframe style="display:none;" name="iframe"></iframe>
 							<div class="form-group" id="fileup" >
 								<label>photo of ring</label>
 								<form name="upload" action="uploadimage.php" enctype="multipart/form-data" method="post" target="iframe" >
@@ -143,7 +143,7 @@
 								 <input type="submit" name="submit" value="Upload Image"/>
 								</form>
 								<p class="help-block">input JPG or PNG</p>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label>Ring Size</label>
 								<select id="ring_s" class="form-control">
@@ -372,7 +372,7 @@
 			
 		}
 		else{
-			$('#fileup').find("input, lable, p").attr("disabled",false);
+			//$('#fileup').find("input, lable, p").attr("disabled",false);
 			$('#image').html('');
 		}
 	}

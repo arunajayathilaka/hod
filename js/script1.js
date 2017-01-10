@@ -108,7 +108,9 @@ var webrtc = (function() {
         var name="img/vr/";
         name+=item;
         //var canvas=new fabric.Canvas('photo');
-        canvas.remove(img1);
+        if(img1!=null){
+            canvas.remove(img1);
+        }
         fabric.Image.fromURL(name, function(img2) {
             
             img1=img2;
@@ -190,6 +192,8 @@ var webrtc = (function() {
     $('#jtype a').on('click',function(){
     var value=$(this).attr('value');
     //alert(value);
+    $('#jtype a').parent('.thumbnail').removeClass("active1");
+    $(this).parent('.thumbnail').addClass("active1");
     additem(value);
 });
 })();

@@ -5,8 +5,8 @@ $(document).ready(function(){
 			
 		});
 	}*/
-				var choice=[];
-				function pro(){
+	var choice=[];
+	function pro(){
 		var Checked = function() {
 			//alert('rer');
 		  var n = $( "input:checked" ).length;
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		};
 		 
 		$('input[type=checkbox]').on("click",Checked );
-				}
+            }
                                 
                                 
                                 function slider(){
@@ -47,8 +47,8 @@ $(document).ready(function(){
 				 $('#vendorname').on('change',function(){
 					//alert("re");
                                         var selected=$("option:selected",this).val();
-                                       // alert(selected);
-                                        if (selected=="Vendor Name"){
+                                       alert(selected);
+                                        if (selected==="Vendor Name"){
                                             /*$('#lead').addClass("dsplay");
                                             $('#simg').addClass("dsplay");
                                             $('#rating').addClass("dsplay");*/
@@ -99,7 +99,7 @@ $(document).ready(function(){
 						data:{shopvendor:vendor},
 						success:function(data1){
 							//alert(data1);
-                                                        var data = JSON.parse(data1)
+                                                        var data = JSON.parse(data1);
 							$('#head').html(data.vendor_name);
                                                         $('#address').html(data.telephone);
                                                         $('#contact').html(data.vAddress);
@@ -128,7 +128,9 @@ $(document).ready(function(){
 					return false;
 					});
 					
-                                        
+     
+    
+    //serach                                   
      $('#pgo').on('click',function(){
            var sname=$('#psearch').val();
            

@@ -43,6 +43,25 @@ require_once 'init.php';
 		opacity: 0.5;
 		filter: alpha(opacity=50);
 	}
+        
+        .active1{
+          
+           background:url(img/tick.png)bottom right;
+           background-size: 30px 30px;
+           background-repeat: no-repeat;
+           color:#66518D !important;
+           z-index:-10;
+        }
+
+        .caption1:hover {
+          
+            background:rgba(124,138,138, 0.3);
+           
+            display: none;
+            
+            color:#fff !important;
+            z-index:2;
+        }
 	</style>
 </head>
 
@@ -134,16 +153,16 @@ require_once 'init.php';
 					
 					
 					</div>
-                                            
-                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                       
+                                        <div class="thumbnail caption1 transthumb text-center active1" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
                                             <a id="" value="neck1.png" role="button"><img src="img/vr/neck1.png" style="height:100;width:100" alt=""></a>							
 					</div>
                                         
-                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                        <div class="thumbnail caption1 transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
                                             <a id="" value="neck2.png" role="button"><img src="img/vr/neck2.png" style="height:100;width:100" alt=""></a>							
 					</div>
                                             
-                                        <div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
+                                        <div class="thumbnail caption1 transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 20px 5px 5px 5px;">
                                             <a id="" value="neck3.png" role="button"><img src="img/vr/neck3.png" style="height:100;width:100" alt=""></a>							
 					</div>
 					
@@ -176,7 +195,7 @@ require_once 'init.php';
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 	<script>
-		
+	
 	</script>
 </body>
 
