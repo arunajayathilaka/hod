@@ -22,6 +22,7 @@
     $result = $conn->query($query);
 	if($result === TRUE){
 		echo 'Record has Successfully been Edited';
+                header("Location: index.php");
     }else{
         echo'Record not done';
     }

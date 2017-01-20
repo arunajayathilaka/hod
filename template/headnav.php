@@ -1,4 +1,7 @@
 <?php
+
+    require_once 'init.php';
+    
 	echo '
 		<div class="row" style="background-image:url(img/dia.png); background-size: 100% 100%;">
 	    	<div class="col-xs-12">
@@ -25,23 +28,23 @@
              
             		</div>
             		<!-- Collect the nav links, forms, and other content for toggling -->
-            		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="max-height:25px;">
+            		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="">
               		
               			<ul class="nav navbar-nav">
-							<li>
-                        		<a href="index.php" style="font-size:20px;">Home</a>
+				<li>
+                        		<a value="index.php" class="'.$_SESSION['N1'].'" style="font-size:20px; cursor:pointer;">Home</a>
                     		</li>
                     		<li>
-                        		<a href="showcase.php" style="font-size:20px;">Showcase</a>
+                        		<a value="showcase.php" class="'.$_SESSION['N2'].'" style="font-size:20px; cursor:pointer;">Showcase</a>
                     		</li>
                     		<li>
-                       			<a href="design.php" style="font-size:20px;">Design</a>
+                       			<a value="design.php" class="'.$_SESSION['N3'].'" style="font-size:20px; cursor:pointer;">Design</a>
                     		</li>
                     		<li>
-                        		<a href="vr1.php" style="font-size:20px;">Vmirror</a>
+                        		<a value="vr1.php" class="'.$_SESSION['N4'].'" style="font-size:20px; cursor:pointer;">Vmirror</a>
                     		</li>
 					 		<li>
-                        		<a href="photohub.php" style="font-size:20px;">Photohub</a>
+                        		<a value="photohub.php" class="'.$_SESSION['N5'].'" style="font-size:20px; cursor:pointer;">Photohub</a>
                     		</li>
                			</ul>
 						

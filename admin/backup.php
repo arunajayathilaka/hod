@@ -3,7 +3,7 @@
     $mysqlUserName      = "root";
     $mysqlPassword      = "";
     $mysqlHostName      = "localhost";
-    $DbName             = "houseofdiamante";
+    $DbName             = "lastdb";
     $backup_name        = "mybackup.sql";
     $tables             = "admin";
 

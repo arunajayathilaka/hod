@@ -14,22 +14,30 @@ if(isset($_POST['item1']) && isset($_POST['item2'])){
 	}
 	if(@count($products) != 0 ){
 		foreach($products as $product1){
-			echo '
-				<div class="col-md-6">
-								<div class="text-center">
-									<img src="'.$product1['image_url'].'" style="height:30%" alt="">
-									<div class="caption">
-										<h4 class="">'.$product1['product_price'].'</h4>
-										<h4><a href="#">'.$product1['product_name'].'</a>
-										</h4>
-										<p>'.$product1['product_dec'].' </p>
-									</div>
-									
-									<div>
-									</div>
-								</div>
-							</div>
-			';
+                    echo' <!-- item -->
+                            <div class="col-md-6 text-center">
+                                <div class="panel panel-default panel-pricing">
+                                    <div class="panel-heading" style="height:300px;">
+                                        <img src="'.$product1['image_url'].'" style="height:70%" alt="">
+                                        <h3>'.$product1['product_name'].'</h3>
+                                    </div>
+                                    <div class="panel-body text-center">
+                                        <p><strong>'.$product1['product_price'].'</strong></p>
+                                    </div>
+                                    <ul class="list-group text-center">
+                                        <li class="list-group-item">'.$product1['product_dec'].'</li>
+                                        <li class="list-group-item"></i> Good Materials</li>
+                                        <li class="list-group-item"> price negotiable</li>
+                                    </ul>
+                                    <div class="panel-footer">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                <!-- /item -->
+                ';
+                    
+			
 		}
 	}
 	else{

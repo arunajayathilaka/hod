@@ -1,4 +1,13 @@
-<?php require_once 'init.php'; ?>
+<?php 
+    require_once 'init.php'; 
+    
+    $_SESSION['N2']=$_SESSION['N1']=$_SESSION['N4']=$_SESSION['N5']="";
+    $_SESSION['N3']="activenav";
+    
+    if(!isset($_SESSION['username'])){
+        header("Location: index.php");
+    }
+?>
 <html>
 
 <head>
@@ -9,15 +18,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Photohub</title>
+    <title>Design</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Belleza|Domine|Slabo+27px" rel="stylesheet"> 
-		
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Pacifico|Belleza|Domine|Slabo+27px" rel="stylesheet">	
     <!-- Custom CSS -->
     <link href="css/home.css" rel="stylesheet">
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
@@ -33,11 +41,12 @@
 		margin-top: -20px;
 		font-size: 15px;
 	}
-	img:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+	.thumbnail:hover {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
 	
         }
+        
 	
 	.selected{
 		box-shadow:0px 12px 22px 1px #333;
@@ -55,11 +64,13 @@
             }
         }
 	
-
+        .border1{
+            border-color: #1260d4;
+        }
 	</style>
 </head>
 
-<body style="background-color:#E1E1E1; background-size: 100% 100%;" >
+<body style="background-color:#FFF6; background-size: 100% 100%;" >
 		<?php 
 		if(isset($_SESSION['er']) && $_SESSION['er']=="true"){$_SESSION['er1']="true";}
 		else{$_SESSION['er1']="false";}?>
@@ -67,18 +78,18 @@
 		
 	 <?php include 'template/headnav.php';?>   
 	
-
+         <?php include("alert.php"); ?>
     <!-- Page Content -->
     <div class="container">
 
         <div class="row">
-			<div class="col-md-3">
+            <div class="col-md-3">
 			
 				 
-                                        <div class="panel panel-default"style="margin-top:20px;background-color: rgba(230,238,255,0.5);">
-					<div class="panel-heading">Types</div>
-                                        <div class="panel-body" style="height:338px; overflow-y: scroll;overflow-x:hidden; white-space:nowrap;">
-					<div id="f4">
+                <div class="panel panel-default"style="margin-top:20px;background-color: rgba(230,238,255,0.5);">
+                    <div class="panel-heading">Types</div>
+                        <div class="panel-body" style="height:338px; overflow-y: scroll;overflow-x:hidden; white-space:nowrap;">
+                            <div id="f4">
 					<?php 
 						$sql3q1=mysqli_query($link,"SELECT * FROM ringtype");
 						 while($row=mysqli_fetch_array($sql3q1)){
@@ -89,14 +100,15 @@
 						<div class="thumbnail transthumb text-center" style="height:auto; width:100px; display:inline-block; margin: 5px 5px 5px 5px;">
 							<a id="<?php echo $ringtype['id']; ?>" value="<?php echo $ringtype['gem_n']; ?>" role="button"><img src="<?php echo $ringtype['image_url']; ?>" alt=""></a>							
 						</div>
+                                               
 					<?php endforeach;?>
-					</div>
-					</div>
+                            </div>
+			</div>
 					
 			
 					
-				</div>
-			</div>
+                    </div>
+		</div>
 			<div class="col-md-6">
 				 <!-- Modal -->
 				  <div class="modal fade" id="myModal" role="dialog">
@@ -108,31 +120,24 @@
 						  <button type="button" class="close" data-dismiss="modal">&times;</button>
 						  <h4 class="modal-title">Call Quotation</h4>
 						</div>
-						<div class="modal-body" style="height:380px; overflow-y: scroll;" >
-						    <div class="form-group">
+						<div class="modal-body" id ="modalq" style="height:380px; overflow-y: scroll;" >
+						    <div id="falertdiv"class="alert alert-danger" style="display:none" role="alert"><p id="falert"></p></div>
+                                                    <div class="form-group">
 								<label>Full Name</label>
 								<textarea id="fullname" class="form-control" rows="1"></textarea>
 							</div>
 							<div class="form-group">
 								<label>E mail</label>
-								<textarea id="email" class="form-control" rows="1"></textarea>
+								<textarea type="email" id="email" class="form-control" rows="1"><?php echo $_SESSION['emailn'];?></textarea>
 							</div>
 							<div class="form-group">
 								<label>Phone Number</label>
 								<textarea id="phone_n"class="form-control" rows="1"></textarea>
 							</div>
 							<div class="form-group">
-									<label>Select the ring</label>
-									<div class="checkbox">
-										<label>
-											<input id="c1" name="sel[]" type="checkbox" value="Add modified one"> Add modified one
-										</label>
-									</div>
-									<div class="checkbox">
-										<label>
-											<input id="c2" name="sel[]" type="checkbox" value="Add new one">Add new one
-										</label>
-									</div>
+									<label>Selected the ring</label>
+									
+									
 							</div>
 							<div id="image"></div>
                                             	<!--	<iframe style="display:none;" name="iframe"></iframe>
@@ -144,19 +149,38 @@
 								</form>
 								<p class="help-block">input JPG or PNG</p>
 							</div> -->
+                                                        <div class="form-group">
+								<label>Vendor Name</label>
+								<select id="vendor_s" class="form-control">
+								<option> </option>
+                                                                    <?php
+                                                                        $sql3q2=mysqli_query($link,"SELECT * FROM vendor");
+                                                                        while($row=mysqli_fetch_array($sql3q2)){
+                                                                            $vendors[]=$row;	
+                                                                        }
+
+                                                                    ?>
+                                                                    <?php foreach($vendors as $vendor):?>
+                                                                    <option value="<?php echo $vendor['vendor_username']; ?>" name="<?php echo $vendor['image_url'];?>"><?php echo $vendor['vendor_name']; ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+							</div>
 							<div class="form-group">
 								<label>Ring Size</label>
 								<select id="ring_s" class="form-control">
-										<option>Size 5</option>
-										<option>Size 6</option>
-										<option>Size 7</option>
-										<option>Size 8</option>
-									</select>
-								<a><small>more ring sizes</small></a>
+                                                                    <option> </option>
+                                                                        <option>Size 5</option>
+									<option>Size 6</option>
+									<option>Size 7</option>
+									<option>Size 8</option>
+                                                                        <option>Other</option>
+								</select>
+								<a href="http://www.ringsizes.co/" target="_blank"><small>more ring sizes</small></a>
 							</div>
 							<div class="form-group">
 								<label>Carrot Weight</label>
 								<select id="carrot_w"class="form-control">
+                                                                        <option> </option>
 									<option>14ct</option>
 									<option>20ct</option>
 									<option>22ct</option>
@@ -197,7 +221,8 @@
 			</div>
 			<div class="col-md-3">
 				<div class="panel panel-default" style="height:380px; margin-top:20px; overflow-y: scroll; background-color: rgba(230,238,255,0.5);">
-					<div class="panel-body" >
+                                    <div class="panel-heading">Customise</div>
+                                        <div class="panel-body" >
 						<div class="panel panel-info" id="pan">
 								<div class="panel-heading">
 									<h3 class="panel-title">Metals</h3>
@@ -291,8 +316,10 @@
 	<script src="js/lapi.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/routes.js"></script>
 	<script>
 	$(document).ready(function () {
+            $('#f4 a').parent('.thumbnail').first().addClass("border1");
 		/*$('#submitb').on('click',function(){
 			var myFormData = new FormData();
 			alert(ringimage.files[0]);
@@ -318,7 +345,23 @@
 				
 			});*/
 		
-		
+		function isEmail(email) {
+                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    return regex.test(email);
+                }
+                function phonenumber(inputtxt)  
+                {  
+                  var phoneno = /^\d{10}$/;  
+                  if(inputtxt.value.match(phoneno))  
+                        {  
+                      return true;  
+                        }  
+                      else  
+                        {  
+                        //alert("message");  
+                        return false;  
+                        }  
+                }  
 		$('#qoutationb').on('click',function(){
 			var fullname=$('#fullname').val();
 			var email=$('#email').val();
@@ -329,17 +372,95 @@
 			var gemstone=$('#gemstone').val();
 			var centercut=$('#centercut').val();
 			var image_url=$('#image img').attr('src');
-			
+                        var vendor=$('#vendor_s option:selected').val();
+			//alert(image_url);
+                        if(fullname===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("empty Full Name");
+                            $('#modalq').scrollTop(0);
+                           // break;
+                        }
+                        else if(email==="" || !isEmail(email)){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Incorrect/Empty Email");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(phone_n==="" || phone_n.length!=10 || !phonenumber(phone_n)){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Incorrect Phone Number");
+                            $('#modalq').scrollTop(0);
+                        }
+                        
+                         else if(image_url==="" || image_url===undefined){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Tick Add Modified One");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(vendor=== ""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Select Vendor");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(ring_s===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Select Ring Size");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(carrot_w===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Select Carrot Size");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(metal===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Empty Metal");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(gemstone===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Empty Gemstone");
+                            $('#modalq').scrollTop(0);
+                        }
+                        else if(centercut===""){
+                            $('#falertdiv').css('display','block');
+                            $('#falert').text("Empty Center Cut");
+                            $('#modalq').scrollTop(0);
+                        }
+                      
+                        else{
 			$.ajax({
-						url:'insertqoutation.php',
-						method:'POST',
-						data:{fullname:fullname,email:email,phone_n:phone_n,ring_s:ring_s,carrot_w:carrot_w,metal:metal,gemstone:gemstone,centercut:centercut,image_url:image_url},
-						success:function(data){
-							alert(data);
-							//$('#image').html(data);
-						}
-					});
+                            url:'insertqoutation.php',
+                            method:'POST',
+                            data:{fullname:fullname,email:email,phone_n:phone_n,ring_s:ring_s,carrot_w:carrot_w,metal:metal,gemstone:gemstone,centercut:centercut,image_url:image_url,vendor:vendor},
+                            success:function(data){
+                                if(data==="SUCCESS"){
+                                    $('#falertdiv').removeClass('alert-danger');
+                                    $('#falertdiv').addClass('alert-success');
+                                    $('#falertdiv').css('display','block');
+                                    $('#falert').text("SuccesFully Sent");
+                                    $('#modalq').scrollTop(0);
+                                }
+                                else if(data==="NOT_SUCCESS"){
+                                    $('#falertdiv').addClass('alert-danger');
+                                    $('#falertdiv').removeClass('alert-success');
+                                    $('#falertdiv').css('display','block');
+                                    $('#falert').text("UnsuccesFully Sent");
+                                    $('#modalq').scrollTop(0);
+                                }
+                                else if(data==="NOT_SET"){
+                                    $('#falertdiv').addClass('alert-danger');
+                                    $('#falertdiv').removeClass('alert-success');
+                                    $('#falertdiv').css('display','block');
+                                    $('#falert').text("Incorrect data");
+                                    $('#modalq').scrollTop(0);
+                                }
+				//alert(data);
+				//$('#image').html(data);
+                            }
+			});
+                        }
 		});
+                        
 	});
 	</script>
 	<script>
@@ -347,34 +468,34 @@
 	
 	$(document).ready(function () {
 		var type=1;
-		$('input[type=checkbox]').on("click",check);
+		//$('input[type=checkbox]').on("click",check);
+                check();
+                /*$('').on('click',function(){
+                    
+                });*/
 	function check(){
-		var id=$(this).attr('id');
-		var value=$(this).attr('value');
+		//var id=$(this).attr('id');
+		//var value=$(this).attr('value');
 		//alert(value);
-		for (var i = 1;i <= 2; i++)
-		{
-			document.getElementById("c" + i).checked = false;
-		}
-		document.getElementById(id).checked = true;
-		if(value=="Add modified one"){
-			$('#fileup').find("input, lable, p").attr("disabled",true);
+		
+		//if($(this).prop("checked")){
+			//$('#fileup').find("input, lable, p").attr("disabled",true);
 			//alert(vendor);
-					$.ajax({
-						url:'ringtype.php',
-						method:'POST',
-						data:{ringtype:type},
-						success:function(data){
-							//alert("done");
-							$('#image').html(data);
-						}
-					});
+                    $.ajax({
+			url:'ringtype.php',
+			method:'POST',
+			data:{ringtype:type},
+			success:function(data){
+                            //alert("done");
+                            $('#image').html(data);
+			}
+                    });
 			
-		}
-		else{
+		//}
+		/*else{
 			//$('#fileup').find("input, lable, p").attr("disabled",false);
 			$('#image').html('');
-		}
+		}*/
 	}
 	$('.panel-heading span.clickable').parents('#pan').find('#p1').slideUp();
 	$('.panel-heading span.clickable').addClass('panel-collapsed');
@@ -394,7 +515,7 @@
 	});
 	
 	
-	var ringmaterial=[];
+    var ringmaterial=[];
     var gemmaterial=[];
 
     var ring;
@@ -405,7 +526,7 @@
     var meshset=[];
     var meshs=[];
 	
-	  function updateMaterialMenu(matname){
+    function updateMaterialMenu(matname){
      
        
         
@@ -426,8 +547,8 @@
         return 0;
        
     }
-	function pickringMaterial(m1){
-      var mat = "";
+    function pickringMaterial(m1){
+        var mat = "";
      
         mat = m1;
        
@@ -641,7 +762,8 @@
 		
 		$('#metal').val(value.replace("edit_ring_",''));
 		pickringMaterial(value);
-		
+		$('#f1 a').parent('.thumbnail').removeClass('border1');
+		$(this).parent('.thumbnail').addClass('border1');
 		
 	});
 	$('#f2 a').on('click',function(){
@@ -650,6 +772,8 @@
 		//alert(value);
 		$('#gemstone').val(value.replace("edit_gem_",''));
 		pickgemMaterial(value);
+                $('#f2 a').parent('.thumbnail').removeClass('border1');
+		$(this).parent('.thumbnail').addClass('border1');
 		//ajax php code for getting gem details from db
 		
 		
@@ -660,7 +784,8 @@
 		//alert(value);
 		$('#centercut').val(value);
 		pickgemcut(value);
-		
+		$('#f3 a').parent('.thumbnail').removeClass('border1');
+		$(this).parent('.thumbnail').addClass('border1');
 		
 	});
 	
@@ -668,8 +793,10 @@
 		 var value=$(this).attr('value');
 		 type=$(this).attr('id');
 		//alert(value);
+                check();
 		picktype(value,type);
-		
+                $('#f4 a').parent('.thumbnail').removeClass('border1');
+		$(this).parent('.thumbnail').addClass('border1');
 	});
 	};
 

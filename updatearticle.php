@@ -1,10 +1,13 @@
 <?php
 require_once 'init.php';
 $user=$_SESSION['username'];
+$lovearr[]=array('null');
+$likesarr[]=array('null');
+$hahaarr[]=array('null');
 if(isset($_GET['search'])){
 		
 	$sname=$_GET['search'];
-	
+	//echo $sname;
 }
 else{
 	$sname=" ";
@@ -13,9 +16,9 @@ else{
 	//$name="article 3";
 	$articleQuery=mysqli_query($link,"SELECT * FROM articles WHERE articles.title_name LIKE '%{$sname}%'");
 
-$likesq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_likes WHERE articles_like.user='{$user}'AND articles_like.type='like'");
-$loveq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_love WHERE articles_like.user='{$user}'AND articles_like.type='love'");
-$hahaq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_haha WHERE articles_like.user='{$user}'AND articles_like.type='haha'");
+$likesq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_like WHERE articles_like.user='{$user}'AND articles_like.type='like'");
+$loveq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_like WHERE articles_like.user='{$user}'AND articles_like.type='love'");
+$hahaq=mysqli_query($link,"SELECT articles_like.article_id FROM articles_like WHERE articles_like.user='{$user}'AND articles_like.type='haha'");
 
 	while($row2=mysqli_fetch_array($likesq)){
 	$likesarr[]=$row2['article_id'];
@@ -70,8 +73,13 @@ while($row4=mysqli_fetch_array($hahaq)){
 					';
 			}
 			$s3.='<span class="badge">'.$article1['hahas'].'</span> </p>
-					
+				<div class="fb-share-button" data-href="http://188.166.179.166/hod/" data-layout="icon_link" data-mobile-iframe="true">
+                                    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">
+                                        Share
+                                    </a>
+                                </div>	
 				</div>
+                                
                 </div>
             </div>';
 			$qw="{$ser}{$s1}{$s2}{$s3}";

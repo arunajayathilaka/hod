@@ -2,11 +2,21 @@
 
 require_once 'init.php';
 
-$passkey=$_GET['passkey'];
+//$passkey=$_GET['passkey'];
 //$link=new mysqli("localhost","root","","houseofdiamante");
-$result = mysqli_query($link,"SELECT * FROM temp_customerlogin WHERE confirm_code LIKE '%{$passkey}%'");
-
-while ($row = mysqli_fetch_array($result))
+//$result = mysqli_query($link,"SELECT * FROM temp_customerlogin WHERE confirm_code LIKE '%{$passkey}%'");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $username=$_POST["u"];
+    $email = $_POST["e"];
+    $password=md5($_POST["p"]);
+    $pwdhashid=md5($password);
+    
+    $sql1="INSERT INTO customerlogin (username,email,password,image_url,pro_pic)
+            VALUES ('$username', '$email', '$password','img/users/user.jpg','img/users/user.jpg')";
+    
+}
+/*while ($row = mysqli_fetch_array($result))
 {		
         if($passkey==$row['confirm_code']){
         	 
@@ -21,7 +31,7 @@ while ($row = mysqli_fetch_array($result))
         	
 			echo "wrong comfirmation";
         }
-}
+}*/
 
 
 

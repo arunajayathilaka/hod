@@ -1,6 +1,6 @@
 <?php
     include('database.php');
-        
+    
     $vid = $_POST['vid'];
     $vname = $_POST['vname'];
     $vmail = $_POST['vmail'];
@@ -10,22 +10,24 @@
     $vpass = $_POST['vpass'];
     $logo = $_FILES['logo'];
 
-
+    
     $filetmp = $_FILES['logo']['tmp_name'];
         $filename =$_FILES['logo']['name'];
         $filetype = $_FILES['logo']['type'];
         $filepath = "uploads/".$filename;
         move_uploaded_file($filetmp, $filepath);
     
-    $query = "UPDATE vendor SET vendor_name ='{$vname}',vendor_email = '{$vmail}', vendor_username = '{$uname}', vendor_password = '{$vpass}', image_url = '{$filepath}', telephone = '{$vtel}', vAddress = '{$vadd}' WHERE id = '{$vid}'" ;
+    $query = "UPDATE vendor SET vendor_name ='{$vname}',vendor_email = '{$vmail}', vendor_password = '{$vpass}', image_url = '{$filepath}', telephone = '{$vtel}', vAddress = '{$vadd}' WHERE vendor_username = '{$uname}'" ;
    // mysqli_select_db($conn,'hod');
     //$retval = mysql_query( $sql, $conn );
             
     $result = $conn->query($query);
 	if($result === TRUE){
 		echo 'Record has Successfully been Edited';
+        header("Location: index.php");
     }else{
         echo'Record not done';
     }
+        
     
     ?>

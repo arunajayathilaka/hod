@@ -2,7 +2,7 @@
  echo'
 	<div class="row">
 			<div class="col-md-4 text-center">
-			<h3 style="color:#93d0c5;">Group32<span>project</span></h3>
+			<h3 class="font3" style="color:#93d0c5;font-size:50px;">Group32<span style="color:#93d0c5;" >project</span></h3>
 			</div>
 			<div class="col-md-4 text-center">
 			
@@ -16,18 +16,18 @@
 				
 			</div>
 			
-			<div class="text-center" >
+			<div class="text-center" style="" >
 
 				
-					<p style="padding-left:0px;"><span class="fa fa-map-marker"></span>
+					<p class="font1"style="padding-left:0px;"><span class="fa fa-map-marker"></span>
 					 NO.35,Reid Avenue,Colombo 07</p>
 				
 
 				
-					<p style="padding-left:0px;"><span class="fa fa-phone"></span>
+					<p class="font1" style="padding-left:0px;"><span class="fa fa-phone"></span>
 					+94 7131 32 437</p>
 				
-					<p style="padding-left:0px;"><span class="fa fa-envelope"></span>
+					<p class="font1" style="padding-left:0px;"><span class="fa fa-envelope"></span>
 					<a href="mailto:support@company.com">support@group32.com</a></p>
 				
 
@@ -38,8 +38,8 @@
 			
 			<div class="text-center">
 			
-			<h1 style="color:#93d0c5;">About</h1>
-			<p class=""style="padding-left:0px;">We are the no.1 online jewellery shopping providers.</p>
+			<h1 class="font2" style="color:#93d0c5;">About</h1>
+			<p class="font1"style="padding-left:0px;">We are the No.1 online jewellery shopping providers.Join with us and get new experience with our unique features.</p>
 			</div>
 			</div>
 		</div>	

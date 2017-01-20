@@ -18,22 +18,26 @@
 		
 		foreach($articless as $article){
 			
-			$ser= '<div class="col-sm-4 col-lg-3 col-md-4" style="margin-right:-10px">
+			$ser= '<div class="col-sm-4 col-lg-3 col-md-4" style="margin-right:-17px">
                     <div class="thumbnail" style="background-color: rgba(230,238,255,0.5); width:220px; height:240px; border: 2px solid #218dfb; margin-right:3px">
 								
 				                <div class="caption">
-                                    <img src="'.$article['image_url'].'" style="height:75px;" alt="">
-                                    <p>Product id = '.$article['item_id'].'</p>
-									<h4><a style="color:darkblue;"href="#">'.$article['product_name'].'</a>
-									</h4>
-                                    <center>
-                                    <div class="row">
-                                    <a value="edit" class="btn btn-default btn-sm active" role="button" data-toggle="modal" data-target="#editj"><img class="img1" src="./img/edit.png" alt="" style="width:35px; height:35px"></a>
+                                    <img src="../'.$article['image_url'].'" style="height:75px;" alt="">
+                                    <div class="row" style="height:70px;">
+                                    <p>&nbspPrice(Rs.) ='.$article['product_price'].'</p>
+									<h4 style="color:darkblue;"href="#">&nbsp'.$article['product_name'].'</h4></div><br><br>
+                                   
+                                  <div class="row">
+                                    <div class="col-lg-8">
+                                            <input class="chk" type="checkbox"  name="item_id[]" value="'.$article["item_id"].'" style="float:left;"/>
+                                        </div>
+                                    <div class="col-lg-4" align="right">
+                                    <button value="editj"class="btn btn-primary" type="button" data-toggle="modal" data-target="#editj'.$article['item_id'].'">Edit</button>
                                     </div>
-                                    <input class="chk" type="checkbox"  name="item_id[]" value="<?php echo '.$article['item_id'].';?>"  style="float:left;"/>
-                                    </center>
+                                    </div>
+                                   
                                     
-                                    
+                                    </div>
 								</div>
 							</div>
                             </div>';

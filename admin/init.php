@@ -3,7 +3,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbname = "houseofdiamante";
+	$dbname = "lastdb";
 	//$_SESSION['username']="mythree";
 	// Create connection
 $conn=@mysqli_connect("$servername","$username","$password");

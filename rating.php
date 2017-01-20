@@ -1,14 +1,14 @@
 <?php
 	require_once 'init.php';
 	require_once 'updateRate.php';
-	if(isset($_POST['rate']) && isset($_POST['shopvendor'])){
+	if(isset($_POST['rate']) && isset($_POST['shopvendor']) && isset($_SESSION['username'])){
 		$rate=$_POST['rate'];
 		$shopvendor=$_POST['shopvendor'];
 	
 	
 	$query = mysqli_query($link,"SELECT * FROM rating where rating.user= '{$_SESSION['username']}' AND rating.vendor_username='{$shopvendor}'  "); 
 	while($data = mysqli_fetch_assoc($query)){
-    $rate_db[] = $data;
+        $rate_db[] = $data;
 	}
 	
 	if(@count($rate_db) == 0 ){
@@ -22,4 +22,7 @@
 	echo ''.$rateRatio.'';
 	
 	}
+        else{
+            echo "NOT_SET_SESSION";
+        }
 ?>
